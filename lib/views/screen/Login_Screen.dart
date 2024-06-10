@@ -85,7 +85,6 @@ class _TapBarState extends State<login_Screen> {
         Text(
           "Welcome Back",
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.headline6,
             fontWeight: FontWeight.w700,
             fontSize: 30,
             color: Colors.black,
