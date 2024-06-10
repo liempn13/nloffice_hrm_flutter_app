@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrm_app/views/screen/Token.dart';
 import 'package:hrm_app/views/widgets/bottom_nav_controller.dart';
 import 'package:hrm_app/views/widgets/chip_textfield_list.dart';
 
@@ -14,6 +15,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        body: Center(
+          child: MyDismissibleList(),
+        ),
         bottomNavigationBar: BottomNavController(),
       ),
     );
