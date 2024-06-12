@@ -29,30 +29,38 @@ class _TapBarState extends State<login_Screen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //Title
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
               child: _title(),
             ),
-            SizedBox(height: 20),
+
             Center(
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                // padding: EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.white,
-                  border: Border.all(color: Colors.red),
+                  border: Border.all(color: Colors.red, width: 1.5),
                 ),
                 child: TabBar(
                   labelColor: Colors.red,
                   unselectedLabelColor: Colors.black,
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.red,
+                          blurRadius: 5.0,
+                          spreadRadius: 1.5,
+                          offset: Offset(0.0, 2.0))
+                    ],
                     color: Colors.white,
                   ),
                   indicatorSize: TabBarIndicatorSize.tab,
-                  labelPadding: EdgeInsets.symmetric(horizontal: 10),
+                  //labelPadding: EdgeInsets.symmetric(horizontal: 10),
                   tabs: const [
                     Tab(
                       text: 'Phone Number',
