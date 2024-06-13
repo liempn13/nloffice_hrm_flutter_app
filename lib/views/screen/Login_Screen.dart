@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hrm_app/views/screen/Login_Phone.dart';
-import 'package:hrm_app/views/screen/Login_Email.dart';
+import 'package:hrm_app/views/screen/login_phone.dart';
+import 'package:hrm_app/views/screen/login_email.dart';
 
 class login_Screen extends StatefulWidget {
   const login_Screen({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _TapBarState extends State<login_Screen> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                //padding: EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.white,
@@ -48,11 +48,17 @@ class _TapBarState extends State<login_Screen> {
                   labelColor: Colors.red,
                   unselectedLabelColor: Colors.black,
                   indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.white,
-                  ),
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 5.0,
+                            spreadRadius: 1.5,
+                            offset: Offset(0.0, 2.0))
+                      ]),
                   indicatorSize: TabBarIndicatorSize.tab,
-                  labelPadding: EdgeInsets.symmetric(horizontal: 10),
+                  //labelPadding: EdgeInsets.symmetric(horizontal: 10),
                   tabs: const [
                     Tab(
                       text: 'Phone Number',
@@ -84,7 +90,7 @@ class _TapBarState extends State<login_Screen> {
       children: [
         Text(
           "Welcome Back",
-          style: GoogleFonts.portLligatSans(
+          style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 30,
             color: Colors.black,
