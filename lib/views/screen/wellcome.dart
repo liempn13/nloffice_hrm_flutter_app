@@ -124,6 +124,6 @@ class Wellcome extends StatelessWidget {
     if (states.contains(MaterialState.pressed)) {
       return Colors.blue;
     }
-    return Colors.white10;
+    return Colors.white;
   }
 }

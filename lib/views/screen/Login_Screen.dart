@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hrm_app/views/screen/login_phone.dart';
 import 'package:hrm_app/views/screen/login_email.dart';
 
