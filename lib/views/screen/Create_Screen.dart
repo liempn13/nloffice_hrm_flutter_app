@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hrm_app/views/screen/Login_Screen.dart';
+import 'package:hrm_app/views/screen/login_screen.dart';
 
 class CreateAcount extends StatefulWidget {
   const CreateAcount({super.key});
@@ -197,11 +197,8 @@ class _CreateAcountState extends State<CreateAcount> {
         textAlign: TextAlign.center,
         text: TextSpan(
           text: "Joln Us",
-          style: GoogleFonts.portLligatSans(
-              textStyle: Theme.of(context).textTheme.headlineLarge,
-              fontWeight: FontWeight.w700,
-              fontSize: 30,
-              color: Colors.black),
+          style: TextStyle(
+              fontWeight: FontWeight.w700, fontSize: 30, color: Colors.black),
         ));
   }
 
