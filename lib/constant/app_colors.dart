@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:hrm_app/constant/app_strings.dart';
-import 'package:hrm_app/services/app.service.dart';
-import 'package:hrm_app/services/local_storage.service.dart';
+import 'package:nloffice_hrm/constant/app_strings.dart';
+import 'package:nloffice_hrm/services/app.service.dart';
+import 'package:nloffice_hrm/services/local_storage.service.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class AppColor {

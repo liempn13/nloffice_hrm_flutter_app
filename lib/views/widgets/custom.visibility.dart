@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/views/widgets/ui_spacer.dart';
+import 'package:nloffice_hrm/views/widgets/ui_spacer.dart';
 
 class CustomVisibilty extends StatelessWidget {
   const CustomVisibilty({required this.child, this.visible = true, Key? key})

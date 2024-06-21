@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/views/widgets/ui_spacer.dart';
-import 'package:hrm_app/views/widgets/empty.state.dart';
-import 'package:hrm_app/views/widgets/loading.shimmer.dart';
+import 'package:nloffice_hrm/views/widgets/ui_spacer.dart';
+import 'package:nloffice_hrm/views/widgets/empty.state.dart';
+import 'package:nloffice_hrm/views/widgets/loading.shimmer.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:velocity_x/velocity_x.dart';
 

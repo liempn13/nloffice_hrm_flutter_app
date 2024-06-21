@@ -8,15 +8,12 @@ environment:
 
 dependencies:
   connectivity_plus: ^6.0.3
-<<<<<<< HEAD
   crypto: ^3.0.3
   adaptive_theme: ^3.3.0
   localize_and_translate: ^4.1.1
   mysql_client: ^0.0.27
   animate_do: ^3.0.2
   http: ^1.2.0
-=======
-  localize_and_translate: ^4.1.1
   velocity_x: 4.1.0
   pull_to_refresh_flutter3: ^2.0.1
   geolocator: ^9.0.2
@@ -26,7 +23,6 @@ dependencies:
     git:
       url: https://github.com/imclerran/flutter-icons.git
       ref: dart-3
->>>>>>> 2530bd71f78d80817b10086b14662d22f1780727
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
@@ -49,10 +45,5 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-<<<<<<< HEAD
     - assets/image/
     - assets/lang/
-=======
-    - assets/images/
-
->>>>>>> 2530bd71f78d80817b10086b14662d22f1780727

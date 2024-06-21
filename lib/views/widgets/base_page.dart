@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:hrm_app/views/widgets/ui_spacer.dart';
+import 'package:nloffice_hrm/views/widgets/ui_spacer.dart';
 // import 'package:sod_delivery/utils/utils.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 

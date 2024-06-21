@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/constant/app_colors.dart';
+import 'package:nloffice_hrm/constant/app_colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class InputStyles {
