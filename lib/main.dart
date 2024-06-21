@@ -1,6 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter/services.dart';
 import 'package:nloffice_hrm/constant/app_route.dart';
 import 'package:nloffice_hrm/constant/app_theme.dart';
@@ -11,11 +10,6 @@ import 'package:nloffice_hrm/views/widgets/bottom_nav_controller.dart';
 import 'package:nloffice_hrm/views/widgets/chip_textfield_list.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:nloffice_hrm/views/route_service.dart' as router;
-=======
-import 'package:hrm_app/views/screen/Token.dart';
-import 'package:hrm_app/views/widgets/bottom_nav_controller.dart';
-import 'package:hrm_app/views/widgets/chip_textfield_list.dart';
->>>>>>> 2530bd71f78d80817b10086b14662d22f1780727
 
 void main() async {
   // await connectSQL();
@@ -27,7 +21,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return AdaptiveTheme(
       light: AppTheme().lightTheme(),
       dark: AppTheme().darkTheme(),
@@ -45,16 +38,6 @@ class MainApp extends StatelessWidget {
           onGenerateRoute: router.generateRoute,
         );
       },
-=======
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: MyDismissibleList(),
-        ),
-        bottomNavigationBar: BottomNavController(),
-      ),
->>>>>>> 2530bd71f78d80817b10086b14662d22f1780727
     );
   }
 }

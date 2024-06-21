@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/views/screen/login_phone.dart';
-import 'package:hrm_app/views/screen/login_email.dart';
+import 'package:nloffice_hrm/views/screen/login_phone.dart';
+import 'package:nloffice_hrm/views/screen/login_email.dart';
 
 class login_Screen extends StatefulWidget {
   const login_Screen({Key? key}) : super(key: key);

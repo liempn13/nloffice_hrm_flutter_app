@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/constant/app_colors.dart';
-import 'package:hrm_app/constant/app_text_styles.dart';
-import 'package:hrm_app/views/widgets/ui_spacer.dart';
+import 'package:nloffice_hrm/constant/app_colors.dart';
+import 'package:nloffice_hrm/constant/app_text_styles.dart';
+import 'package:nloffice_hrm/views/widgets/ui_spacer.dart';
 // import 'package:sod_user/utils/utils.dart';
-import 'package:hrm_app/views/widgets/busy_indicator.dart';
+import 'package:nloffice_hrm/views/widgets/busy_indicator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:velocity_x/velocity_x.dart';
 

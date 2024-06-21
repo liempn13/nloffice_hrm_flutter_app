@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:hrm_app/views/widgets/custom.visibility.dart';
+import 'package:nloffice_hrm/views/widgets/custom.visibility.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ToogleGridViewIcon extends StatefulWidget {
