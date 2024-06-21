@@ -1,7 +1,7 @@
 class AppRoutes {
   static const welcomeRoute = "welcome";
   static const loginRoute = "login";
-  static const editProfileRoute = "edit_profile";
+  static const profileRoute = "profile";
   static const changePasswordRoute = "change_password";
   static const registerRoute = "register";
   static const forgotPasswordRoute = "forgot_password";

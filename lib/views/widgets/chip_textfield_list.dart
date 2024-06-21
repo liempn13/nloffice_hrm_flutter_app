@@ -11,40 +11,40 @@ class EditableChipFieldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
-      home: const EditableChipFieldExample(),
+      home: const EditableChipField(),
     );
   }
 }
 
-class EditableChipFieldExample extends StatefulWidget {
-  const EditableChipFieldExample({super.key});
+class EditableChipField extends StatefulWidget {
+  const EditableChipField({super.key});
 
   @override
-  EditableChipFieldExampleState createState() {
-    return EditableChipFieldExampleState();
+  EditableChipFieldState createState() {
+    return EditableChipFieldState();
   }
 }
 
-class EditableChipFieldExampleState extends State<EditableChipFieldExample> {
+class EditableChipFieldState extends State<EditableChipField> {
   final FocusNode _chipFocusNode = FocusNode();
-  List<String> _toppings = <String>[dataList.first];
+  List<String> _members = <String>[dataList.first];
   List<String> _suggestions = <String>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Editable Chip Field Sample'),
+        title: const Text('Editable Chip Field'),
       ),
       body: Column(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ChipsInput<String>(
-              values: _toppings,
+              values: _members,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.local_pizza_rounded),
-                hintText: 'Search for toppings',
+                hintText: 'Search for members',
               ),
               strutStyle: const StrutStyle(fontSize: 15),
               onChanged: _onChanged,
@@ -74,7 +74,7 @@ class EditableChipFieldExampleState extends State<EditableChipFieldExample> {
     final List<String> results = await _suggestionCallback(value);
     setState(() {
       _suggestions = results
-          .where((String topping) => !_toppings.contains(topping))
+          .where((String topping) => !_members.contains(topping))
           .toList();
     });
   }
@@ -89,7 +89,7 @@ class EditableChipFieldExampleState extends State<EditableChipFieldExample> {
 
   void _selectSuggestion(String topping) {
     setState(() {
-      _toppings.add(topping);
+      _members.add(topping);
       _suggestions = <String>[];
     });
   }
@@ -98,7 +98,7 @@ class EditableChipFieldExampleState extends State<EditableChipFieldExample> {
 
   void _onChipDeleted(String topping) {
     setState(() {
-      _toppings.remove(topping);
+      _members.remove(topping);
       _suggestions = <String>[];
     });
   }
@@ -106,19 +106,19 @@ class EditableChipFieldExampleState extends State<EditableChipFieldExample> {
   void _onSubmitted(String text) {
     if (text.trim().isNotEmpty) {
       setState(() {
-        _toppings = <String>[..._toppings, text.trim()];
+        _members = <String>[..._members, text.trim()];
       });
     } else {
       _chipFocusNode.unfocus();
       setState(() {
-        _toppings = <String>[];
+        _members = <String>[];
       });
     }
   }
 
   void _onChanged(List<String> data) {
     setState(() {
-      _toppings = data;
+      _members = data;
     });
   }
 
@@ -326,7 +326,6 @@ class ToppingInputChip extends StatelessWidget {
     );
   }
 }
-
 
 class ChipsInput<T> extends StatefulWidget {
   const ChipsInput({
