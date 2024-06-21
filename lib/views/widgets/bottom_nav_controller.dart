@@ -13,10 +13,13 @@ class _BottomNavControllerState extends State<BottomNavController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: MediaQuery.sizeOf(context).width <= 834
-          ? BottomNavigationBar(items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'more')
-            ])
+          ? BottomNavigationBar(
+              // backgroundColor: Colors.white,
+              items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.home), label: 'home'),
+                  BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'more')
+                ])
           : NavigationRail(
               groupAlignment: -1.0,
               labelType: NavigationRailLabelType.all,

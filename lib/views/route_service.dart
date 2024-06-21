@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hrm_app/constant/app_route.dart';
-import 'package:hrm_app/views/widgets/bottom_nav_controller.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
+import 'package:nloffice_hrm/views/screen/profile_screen.dart';
+import 'package:nloffice_hrm/views/widgets/bottom_nav_controller.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes:
       return MaterialPageRoute(
-          builder: (context) => BottomNavController(),
+          builder: (context) => const ProfileScreen(),
           settings: RouteSettings(
-              name: AppRoutes.homeRoute,
+              name: AppRoutes.profileRoute,
               arguments: settings.arguments as Object));
     default:
       return MaterialPageRoute(builder: ((context) => BottomNavController()));
