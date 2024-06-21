@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 
-class Salarys {
-  Salarys(
+class Salaries {
+  Salaries(
       {this.salaryId,
       this.salaryName,
       this.salary,
@@ -15,7 +15,7 @@ class Salarys {
   Int8? status;
   //status
   //Salary();
-  factory Salarys.fromJson(Map<String, dynamic> json) => Salarys(
+  factory Salaries.fromJson(Map<String, dynamic> json) => Salaries(
       salaryId: json["salary_id"],
       salaryName: json["salary_name"],
       salary: json["salary"],
