@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/Create_Screen.dart';
+import 'package:nloffice_hrm/views/screen/sign_up.dart';
 
 class LoginEmail extends StatefulWidget {
   final String title;

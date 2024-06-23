@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:nloffice_hrm/constant/app_colors.dart';
+import 'package:nloffice_hrm/constant/app_color.dart';
 import 'package:nloffice_hrm/constant/input.styles.dart';
 
 import 'package:nloffice_hrm/constant/app_text_styles.dart';

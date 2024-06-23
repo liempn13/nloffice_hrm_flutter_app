@@ -1,13 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nloffice_hrm/views/screen/Create_Screen.dart';
+import 'package:nloffice_hrm/views/screen/sign_up.dart';
 
 class LoginPhone extends StatefulWidget {
   final String title;
 
   LoginPhone({Key? key, required this.title}) : super(key: key);
-  
+
   @override
   State<LoginPhone> createState() => _LoginPhoneState();
 }
@@ -53,7 +53,8 @@ class _LoginPhoneState extends State<LoginPhone> {
                                     prefixIcon: Icon(Icons.phone),
                                     labelText: "Enter your phone number",
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
                                     ),
                                     fillColor: Color(0xfff3f3f4),
                                     filled: true,
@@ -61,7 +62,8 @@ class _LoginPhoneState extends State<LoginPhone> {
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter your phone number';
-                                    } else if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+                                    } else if (!RegExp(r'^\d{10}$')
+                                        .hasMatch(value)) {
                                       return 'Please enter a valid phone number';
                                     }
                                     return null;

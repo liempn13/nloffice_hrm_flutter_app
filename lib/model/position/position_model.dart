@@ -4,7 +4,7 @@ class Positions {
   Positions({this.positionId, this.positionName, this.enterpriseId});
   String? positionId;
   String? positionName;
-  Int8? enterpriseId;
+  int? enterpriseId;
 
   factory Positions.fromJson(Map<String, dynamic> json) => Positions(
       positionId: json["position_id"],

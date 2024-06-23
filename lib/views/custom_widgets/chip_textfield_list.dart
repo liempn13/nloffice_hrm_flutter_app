@@ -27,7 +27,7 @@ class EditableChipField extends StatefulWidget {
 
 class EditableChipFieldState extends State<EditableChipField> {
   final FocusNode _chipFocusNode = FocusNode();
-  List<String> _members = <String>[dataList.first];
+  List<String> _dataList = <String>[dataList.first];
   List<String> _suggestions = <String>[];
 
   @override
@@ -41,10 +41,10 @@ class EditableChipFieldState extends State<EditableChipField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ChipsInput<String>(
-              values: _members,
+              values: _dataList,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.local_pizza_rounded),
-                hintText: 'Search for members',
+                hintText: 'Search for ...',
               ),
               strutStyle: const StrutStyle(fontSize: 15),
               onChanged: _onChanged,
@@ -74,7 +74,7 @@ class EditableChipFieldState extends State<EditableChipField> {
     final List<String> results = await _suggestionCallback(value);
     setState(() {
       _suggestions = results
-          .where((String topping) => !_members.contains(topping))
+          .where((String topping) => !_dataList.contains(topping))
           .toList();
     });
   }
@@ -89,7 +89,7 @@ class EditableChipFieldState extends State<EditableChipField> {
 
   void _selectSuggestion(String topping) {
     setState(() {
-      _members.add(topping);
+      _dataList.add(topping);
       _suggestions = <String>[];
     });
   }
@@ -98,7 +98,7 @@ class EditableChipFieldState extends State<EditableChipField> {
 
   void _onChipDeleted(String topping) {
     setState(() {
-      _members.remove(topping);
+      _dataList.remove(topping);
       _suggestions = <String>[];
     });
   }
@@ -106,19 +106,19 @@ class EditableChipFieldState extends State<EditableChipField> {
   void _onSubmitted(String text) {
     if (text.trim().isNotEmpty) {
       setState(() {
-        _members = <String>[..._members, text.trim()];
+        _dataList = <String>[..._dataList, text.trim()];
       });
     } else {
       _chipFocusNode.unfocus();
       setState(() {
-        _members = <String>[];
+        _dataList = <String>[];
       });
     }
   }
 
   void _onChanged(List<String> data) {
     setState(() {
-      _members = data;
+      _dataList = data;
     });
   }
 

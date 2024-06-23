@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/constant/app_colors.dart';
+import 'package:nloffice_hrm/constant/app_color.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class InputStyles {
@@ -7,9 +7,9 @@ class InputStyles {
   static InputBorder inputEnabledBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        // color: AppColor.cancelledColor,
-         //AppColor.primaryColor,
-      ),
+          // color: AppColor.cancelledColor,
+          //AppColor.primaryColor,
+          ),
       borderRadius: BorderRadius.circular(Vx.dp8),
     );
   }
@@ -18,9 +18,9 @@ class InputStyles {
   static InputBorder inputFocusBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        // color: AppColor.cancelledColor,
-         //AppColor.primaryColorDark,
-      ),
+          // color: AppColor.cancelledColor,
+          //AppColor.primaryColorDark,
+          ),
       borderRadius: BorderRadius.circular(Vx.dp8),
     );
   }
@@ -30,8 +30,8 @@ class InputStyles {
   static InputBorder inputUnderlineEnabledBorder() {
     return UnderlineInputBorder(
       borderSide: BorderSide(
-        // color: AppColor.cancelledColor,
-      ),
+          // color: AppColor.cancelledColor,
+          ),
       borderRadius: BorderRadius.circular(Vx.dp8),
     );
   }
@@ -40,8 +40,8 @@ class InputStyles {
   static InputBorder inputUnderlineFocusBorder() {
     return UnderlineInputBorder(
       borderSide: BorderSide(
-        // color: AppColor.cancelledColor,
-      ),
+          // color: AppColor.cancelledColor,
+          ),
       borderRadius: BorderRadius.circular(Vx.dp8),
     );
   }

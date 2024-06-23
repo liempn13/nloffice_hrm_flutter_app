@@ -7,7 +7,8 @@ environment:
   sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
-  connectivity_plus: ^6.0.3
+  awesome_notifications: ^0.7.4+1
+  connectivity_plus: ^5.0.2
   crypto: ^3.0.3
   adaptive_theme: ^3.3.0
   localize_and_translate: ^4.1.1
@@ -19,6 +20,8 @@ dependencies:
   geolocator: ^9.0.2
   rx_shared_preferences: ^3.0.0
   custom_clippers: ^2.0.0
+  easy_localization: ^3.0.2
+  device_info_plus: ^9.0.2
   flutter_icons:
     git:
       url: https://github.com/imclerran/flutter-icons.git
@@ -38,12 +41,12 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/Googlelogo.png"
-  adaptive_icon_foreground: "assets/images/Googlelogo.png"
+  image_path: "assets/images/"
+  adaptive_icon_foreground: "assets/images/"
   adaptive_icon_background: "#5e17eb"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/image/
+    - assets/images/
     - assets/lang/

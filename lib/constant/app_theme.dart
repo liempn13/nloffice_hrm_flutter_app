@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-// import 'package:sod_vendor/constants/app_colors.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:nloffice_hrm/constant/app_color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   //
   ThemeData lightTheme() {
     return ThemeData(
-        // fontFamily: GoogleFonts.iBMPlexSerif().fontFamily,
-        // fontFamily: GoogleFonts.krub().fontFamily,
-        // fontFamily: GoogleFonts.roboto().fontFamily,
-        // primaryColor: AppColor.primaryColor,
+        fontFamily: GoogleFonts.roboto().fontFamily,
+        primaryColor: AppColor.primaryColor,
         // primaryColorDark: AppColor.primaryColorDark,
         textSelectionTheme: TextSelectionThemeData(
           selectionColor: Colors.grey,
@@ -46,10 +44,8 @@ class AppTheme {
   //
   ThemeData darkTheme() {
     return ThemeData(
-      // fontFamily: GoogleFonts.iBMPlexSerif().fontFamily,
-      // fontFamily: GoogleFonts.krub().fontFamily,
-      // fontFamily: GoogleFonts.roboto().fontFamily,
-      // primaryColor: AppColor.primaryColor,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+      primaryColor: AppColor.primaryColor,
       // primaryColorDark: AppColor.primaryColorDark,
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: Colors.grey,
@@ -70,8 +66,8 @@ class AppTheme {
       ),
       colorScheme: ColorScheme.fromSwatch()
           .copyWith(
-            // primary: AppColor.primaryColor,
-            // secondary: AppColor.accentColor,
+            primary: AppColor.primaryColor,
+            secondary: AppColor.accentColor,
             brightness: Brightness.dark,
           )
           .copyWith(

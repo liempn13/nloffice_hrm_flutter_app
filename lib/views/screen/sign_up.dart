@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/login_screen.dart';
+import 'package:nloffice_hrm/views/screen/auth/login/login_screen.dart';
 
 class CreateAcount extends StatefulWidget {
   const CreateAcount({super.key});
