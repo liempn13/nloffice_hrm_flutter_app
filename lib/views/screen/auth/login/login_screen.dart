@@ -60,10 +60,10 @@ class _TapBarState extends State<login_Screen> {
                   //labelPadding: EdgeInsets.symmetric(horizontal: 10),
                   tabs: const [
                     Tab(
-                      text: 'Phone Number',
+                      text: 'Email Address',
                     ),
                     Tab(
-                      text: 'Email Address',
+                      text: 'Phone Number',
                     ),
                   ],
                 ),
@@ -72,8 +72,8 @@ class _TapBarState extends State<login_Screen> {
             Expanded(
               child: TabBarView(
                 children: [
-                  Center(child: login_Email(title: 'Login')),
-                  Center(child: login_Phone(title: 'Login')),
+                  Center(child: LoginEmail(title: 'Login')),
+                  Center(child: LoginPhone(title: 'Login')),
                 ],
               ),
             ),
