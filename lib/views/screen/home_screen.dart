@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/widgets/bottom_nav_controller.dart';
+import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

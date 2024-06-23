@@ -1,19 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nloffice_hrm/views/screen/Create_Screen.dart';
+import 'package:nloffice_hrm/views/screen/sign_up.dart';
 
-class login_Phone extends StatefulWidget {
+class login_Email extends StatefulWidget {
   String title;
 
-  login_Phone({Key? key, required this.title}) : super(key: key);
+  login_Email({Key? key, required this.title}) : super(key: key);
   @override
-  State<login_Phone> createState() => _login_screenState();
+  State<login_Email> createState() => _login_screenState();
 }
 
-class _login_screenState extends State<login_Phone> {
-  final phoneController = TextEditingController();
-
+class _login_screenState extends State<login_Email> {
+  final usernameController = TextEditingController();
+  final PasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +31,8 @@ class _login_screenState extends State<login_Phone> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .02,
                     ),
+                    //_title(),
+                    //Text('Login to continue'),
                     SizedBox(
                       height: 50,
                     ),
@@ -42,13 +44,31 @@ class _login_screenState extends State<login_Phone> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextField(
-                                controller: phoneController,
+                                controller: usernameController,
                                 scrollPadding: EdgeInsets.only(bottom: 150),
                                 style: TextStyle(fontSize: 18),
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.phone),
-                                    labelText: "Enter your phone number",
+                                    prefixIcon: Icon(Icons.email_outlined),
+                                    labelText: "Email",
+                                    border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    fillColor: Color(0xfff3f3f4),
+                                    filled: true),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              TextField(
+                                controller: PasswordController,
+                                scrollPadding: EdgeInsets.only(bottom: 150),
+                                style: TextStyle(fontSize: 18),
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.lock_outline),
+                                    labelText: "Password",
                                     border: OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
@@ -61,6 +81,10 @@ class _login_screenState extends State<login_Phone> {
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _forgetPas(),
                     SizedBox(
                       height: 10,
                     ),
@@ -109,6 +133,30 @@ class _login_screenState extends State<login_Phone> {
     );
   }
 
+  Widget _backButton() {
+    return InkWell(
+      onTap: () => {Navigator.pop(context)},
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: Icon(
+                Icons.keyboard_arrow_left,
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              "Back",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _LogInButon() {
     return InkWell(
         onTap: () {},
@@ -136,6 +184,20 @@ class _login_screenState extends State<login_Phone> {
           child: Text(
             'LogIn',
             style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ));
+  }
+
+  Widget _forgetPas() {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 0),
+        alignment: Alignment.bottomRight,
+        child: TextButton(
+          onPressed: () => {},
+          child: Text(
+            'Forget password ?',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ));
   }

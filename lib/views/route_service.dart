@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/constant/app_route.dart';
 import 'package:nloffice_hrm/views/screen/profile_screen.dart';
-import 'package:nloffice_hrm/views/widgets/bottom_nav_controller.dart';
+import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

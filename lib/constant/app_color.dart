@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppColor {}
-
-class LightThemeColor {
-  Color blue = Colors.blue;
-}
-
-class DarkThemeColor {
-  Color amber = Colors.amber;
+class AppColor {
+  static Color get primaryColor => Colors.blue;
+  static Color get accentColor => Colors.amber;
   Color white = Colors.white;
 }

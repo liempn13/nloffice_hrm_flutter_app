@@ -13,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   // storing index for managing colors
   int selectedIndex = 0;
-  Image avatar = Image.asset('assets/image/female_avatar.jpg');
+  late final Image avatar;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +69,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        // Getting color from colorlist based on page index
                         Icon(
                           Icons.date_range_outlined,
                           size: 35,
@@ -98,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               )
             ],
           ),
-          // Page View To Display Car on top of everything using stack
+          // PageView to display avatar on top of everything using stack
           PageView(
             children: [
               Center(

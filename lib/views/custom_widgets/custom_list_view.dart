@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/widgets/ui_spacer.dart';
-import 'package:nloffice_hrm/views/widgets/empty.state.dart';
-import 'package:nloffice_hrm/views/widgets/loading.shimmer.dart';
+import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
+import 'package:nloffice_hrm/views/custom_widgets/empty.state.dart';
+import 'package:nloffice_hrm/views/custom_widgets/loading_shimmer.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -107,8 +107,8 @@ class CustomListView extends StatelessWidget {
       itemCount: this.dataSet.length,
       separatorBuilder: this.separatorBuilder ??
           (context, index) => this.scrollDirection == Axis.vertical
-              ?  UiSpacer.verticalSpace(space: separator??20.0)
-              : UiSpacer.horizontalSpace(space: separator??20.0),
+              ? UiSpacer.verticalSpace(space: separator ?? 20.0)
+              : UiSpacer.horizontalSpace(space: separator ?? 20.0),
     );
   }
 }

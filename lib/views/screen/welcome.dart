@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
 class Wellcome extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class Wellcome extends StatelessWidget {
               children: [
                 // Logo and text
                 Text(
-                  'HRM\nPowered by iPOS.vn',
+                  'NLOffice HRM\nPowered by NLOffice.vn'.tr(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -37,7 +38,7 @@ class Wellcome extends StatelessWidget {
           Column(
             children: [
               Text(
-                'Chào mừng bạn đến với\n iPOS HRM dành cho\n chủ thương hiệu',
+                'Chào mừng bạn đến với\n NLOffice HRM dành cho\n doanh nghiệp',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 26,
@@ -48,7 +49,7 @@ class Wellcome extends StatelessWidget {
               ),
               SizedBox(height: 350),
               Text(
-                'Công ty / thương hiệu của bạn\n đã sử dụng iPOS HRM chưa?',
+                'Công ty / thương hiệu của bạn\n đã sử dụng NLOffice HRM chưa?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,
