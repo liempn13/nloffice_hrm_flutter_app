@@ -3,20 +3,12 @@ import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:nloffice_hrm/constant/app_languages.dart';
-import 'package:nloffice_hrm/constant/app_route.dart';
-import 'package:nloffice_hrm/constant/app_theme.dart';
-import 'package:nloffice_hrm/constant/internet_connect.dart';
-import 'package:nloffice_hrm/services/notification.service.dart';
-import 'package:nloffice_hrm/views/screen/home_screen.dart';
-import 'package:nloffice_hrm/views/screen/profile_screen.dart';
-import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
-import 'package:nloffice_hrm/views/custom_widgets/chip_textfield_list.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:nloffice_hrm/constant/app_languages.dart';
+import 'package:nloffice_hrm/constant/app_theme.dart';
 import 'package:nloffice_hrm/views/route_service.dart' as router;
+import 'package:nloffice_hrm/views/screen/welcome.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -38,9 +30,9 @@ void main() async {
         assetsDirectory: 'assets/lang',
         languagesList: AppLanguages.codes,
         localeType: LocalizationDefaultType.asDefined);
-    await NotificationService.clearIrrelevantNotificationChannels();
-    await NotificationService.initializeAwesomeNotification();
-    await NotificationService.listenToActions();
+    // await NotificationService.clearIrrelevantNotificationChannels();
+    // await NotificationService.initializeAwesomeNotification();
+    // await NotificationService.listenToActions();
     //prevent ssl error
     HttpOverrides.global = new MyHttpOverrides();
     // Run app!
@@ -69,7 +61,7 @@ class MainApp extends StatelessWidget {
             // open your app when is executed from outside when is terminated.
             return router.generateRoute(settings);
           },
-          home: ProfileScreen(),
+          home: Wellcome(),
           theme: theme,
           darkTheme: darkTheme,
         );

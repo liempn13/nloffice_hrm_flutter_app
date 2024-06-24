@@ -13,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   // storing index for managing colors
   int selectedIndex = 0;
-  late final Image avatar;
+  Image avatar = Image.asset('assets/images/male_avatar.png');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
