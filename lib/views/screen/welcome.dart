@@ -73,11 +73,11 @@ class Wellcome extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.resolveWith(getColor),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          WidgetStateProperty.resolveWith(getColor),
+                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                         EdgeInsets.symmetric(vertical: 26, horizontal: 24),
                       ),
-                      textStyle: MaterialStateProperty.all<TextStyle>(
+                      textStyle: WidgetStateProperty.all<TextStyle>(
                         TextStyle(fontSize: 16),
                       ),
                     ),
@@ -99,11 +99,11 @@ class Wellcome extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.resolveWith(getColor),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          WidgetStateProperty.resolveWith(getColor),
+                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                         EdgeInsets.symmetric(vertical: 26, horizontal: 24),
                       ),
-                      textStyle: MaterialStateProperty.all<TextStyle>(
+                      textStyle: WidgetStateProperty.all<TextStyle>(
                         TextStyle(fontSize: 16),
                       ),
                     ),
