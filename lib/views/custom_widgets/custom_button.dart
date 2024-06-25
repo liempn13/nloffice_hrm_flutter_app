@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:nloffice_hrm/constant/app_color.dart';
 import 'package:nloffice_hrm/constant/app_text_styles.dart';
-import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
 // import 'package:sod_user/utils/utils.dart';
 import 'package:nloffice_hrm/views/custom_widgets/busy_indicator.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CustomButton extends StatelessWidget {
@@ -21,8 +21,10 @@ class CustomButton extends StatelessWidget {
   final double? shapeRadius;
   final Color? color;
   final Color? iconColor;
+  final Color? foregroundColor;
   final double? elevation;
   final EdgeInsetsGeometry? padding;
+  final Color? backgroundcolor;
 
   const CustomButton({
     this.title,
@@ -37,9 +39,11 @@ class CustomButton extends StatelessWidget {
     this.loading = false,
     this.shapeRadius = Vx.dp4,
     this.color,
+    this.backgroundcolor,
     this.titleStyle,
     this.elevation,
     this.padding,
+    this.foregroundColor,
     Key? key,
   }) : super(key: key);
 
@@ -51,8 +55,9 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           padding: this.padding,
           elevation: this.elevation,
+          foregroundColor: this.foregroundColor,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          backgroundColor: this.color ?? AppColor.primaryColor,
+          backgroundColor: this.backgroundcolor ?? AppColor.primaryColor,
           disabledBackgroundColor: this.loading
               ? this.color == null
                   ? AppColor.primaryColor

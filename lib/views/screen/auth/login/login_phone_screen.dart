@@ -1,27 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/sign_up.dart';
+import 'package:nloffice_hrm/views/screen/sign_up_screen.dart';
 
-class LoginEmail extends StatefulWidget {
+class LoginPhone extends StatefulWidget {
   final String title;
 
-  LoginEmail({Key? key, required this.title}) : super(key: key);
+  LoginPhone({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<LoginEmail> createState() => _LoginEmailState();
+  State<LoginPhone> createState() => _LoginPhoneState();
 }
 
-class _LoginEmailState extends State<LoginEmail> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+class _LoginPhoneState extends State<LoginPhone> {
+  final phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _passwordVisible = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _passwordVisible = false;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +34,6 @@ class _LoginEmailState extends State<LoginEmail> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .02,
                       ),
-                      //_title(),
-                      //Text('Login to continue'),
                       SizedBox(
                         height: 50,
                       ),
@@ -55,12 +45,12 @@ class _LoginEmailState extends State<LoginEmail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TextFormField(
-                                  controller: usernameController,
+                                  controller: phoneController,
                                   scrollPadding: EdgeInsets.only(bottom: 150),
                                   style: TextStyle(fontSize: 18),
                                   decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.email_outlined),
-                                    labelText: "Email",
+                                    prefixIcon: Icon(Icons.phone),
+                                    labelText: "Enter your phone number",
                                     border: OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
@@ -70,49 +60,10 @@ class _LoginEmailState extends State<LoginEmail> {
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Please enter your email';
-                                    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                      return 'Please enter your phone number';
+                                    } else if (!RegExp(r'^\d{10}$')
                                         .hasMatch(value)) {
-                                      return 'Please enter a valid email address';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                TextFormField(
-                                  controller: passwordController,
-                                  scrollPadding: EdgeInsets.only(bottom: 150),
-                                  style: TextStyle(fontSize: 18),
-                                  obscureText: !_passwordVisible,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.lock_outline),
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _passwordVisible
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _passwordVisible = !_passwordVisible;
-                                        });
-                                      },
-                                    ),
-                                    labelText: "Password",
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    fillColor: Color(0xfff3f3f4),
-                                    filled: true,
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your password';
-                                    } else if (value.length < 6) {
-                                      return 'Password must be at least 6 characters long';
+                                      return 'Please enter a valid phone number';
                                     }
                                     return null;
                                   },
@@ -125,45 +76,25 @@ class _LoginEmailState extends State<LoginEmail> {
                       SizedBox(
                         height: 10,
                       ),
-                      _forgetPassword(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [_logInButton()],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            child: Text(
-                              'OR',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      _LogInButton(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: Center(
+                          child: Text(
+                            'OR',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
+                        ),
                       ),
                       _createAccount(),
                       SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [_loginGoogle()],
-                      ),
+                      _loginGoogle()
                     ],
                   ),
                 ),
@@ -175,17 +106,16 @@ class _LoginEmailState extends State<LoginEmail> {
     );
   }
 
-  Widget _logInButton() {
+  Widget _LogInButton() {
     return InkWell(
       onTap: () {
         if (_formKey.currentState!.validate()) {
-          // Process the login with email and password
-          print('Email: ${usernameController.text}');
-          print('Password: ${passwordController.text}');
+          // Process the phone number
+          print('Phone number: ${phoneController.text}');
         }
       },
       child: Container(
-        width: MediaQuery.of(context).size.width / 1.09,
+        width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
@@ -210,21 +140,6 @@ class _LoginEmailState extends State<LoginEmail> {
         child: Text(
           'LogIn',
           style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _forgetPassword() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(vertical: 0),
-      alignment: Alignment.bottomRight,
-      child: TextButton(
-        onPressed: () => {},
-        child: Text(
-          'Forget password?',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
         ),
       ),
     );
@@ -267,7 +182,7 @@ class _LoginEmailState extends State<LoginEmail> {
     return InkWell(
       onTap: () {},
       child: Container(
-        width: MediaQuery.of(context).size.width / 1.09,
+        width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
