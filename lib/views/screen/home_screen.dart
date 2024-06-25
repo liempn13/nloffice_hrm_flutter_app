@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
               value: light,
               activeColor: Colors.yellow,
               inactiveThumbColor: Colors.black,
-              thumbIcon: MaterialStatePropertyAll<Icon>(Icon(light
+              thumbIcon: WidgetStatePropertyAll<Icon>(Icon(light
                   ? Icons.light_mode_rounded
                   : Icons.nightlight_outlined)),
               onChanged: (bool value) {
