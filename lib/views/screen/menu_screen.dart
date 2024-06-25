@@ -48,7 +48,7 @@ class MenuScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavController(),
+        bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.apps_rounded),
