@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/auth/login/login_phone.dart';
-import 'package:nloffice_hrm/views/screen/auth/login/login_email.dart';
+import 'package:nloffice_hrm/views/screen/auth/login/login_email_screen.dart';
+import 'package:nloffice_hrm/views/screen/auth/login/login_phone_screen.dart';
 
-class login_Screen extends StatefulWidget {
-  const login_Screen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<login_Screen> createState() => _TapBarState();
+  State<LoginScreen> createState() => _TapBarState();
 }
 
-class _TapBarState extends State<login_Screen> {
+class _TapBarState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -29,7 +29,7 @@ class _TapBarState extends State<login_Screen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
               child: _title(),
             ),
             SizedBox(height: 20),
@@ -45,7 +45,7 @@ class _TapBarState extends State<login_Screen> {
                 ),
                 child: TabBar(
                   labelColor: Colors.red,
-                  unselectedLabelColor: Colors.black,
+                  // unselectedLabelColor: Colors.black,
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: Colors.white,

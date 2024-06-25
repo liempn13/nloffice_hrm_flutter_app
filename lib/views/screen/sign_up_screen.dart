@@ -273,7 +273,7 @@ class _CreateAcountState extends State<CreateAcount> {
         print('Referral Code: ${referralController.text}');
       },
       child: Container(
-        width: MediaQuery.of(context).size.width / 1.09,
+        width: MediaQuery.of(context).size.width / 1.12,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
@@ -323,7 +323,7 @@ class _CreateAcountState extends State<CreateAcount> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => login_Screen(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     },

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
-import 'package:nloffice_hrm/views/custom_widgets/empty.state.dart';
-import 'package:nloffice_hrm/views/custom_widgets/loading_shimmer.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CustomGridView extends StatelessWidget {
   //
@@ -63,60 +59,8 @@ class CustomGridView extends StatelessWidget {
     this.canPullUp = false,
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return this.justList
-        ? _getBody()
-        : VStack(
-            [
-              this.title ?? UiSpacer.emptySpace(),
-              _getBody(),
-            ],
-            crossAlignment: CrossAxisAlignment.start,
-          );
-  }
-
-  Widget _getBody() {
-    return this.isLoading
-        ? this.loadingWidget ?? LoadingShimmer()
-        : this.hasError
-            ? this.errorWidget ?? EmptyState()
-            : this.justList
-                ? (this.dataSet == null || this.dataSet!.isEmpty)
-                    ? this.emptyWidget ?? UiSpacer.emptySpace()
-                    : _getBodyList()
-                : Expanded(
-                    child: _getBodyList(),
-                  );
-  }
-
-  //
-  Widget _getBodyList() {
-    return this.canRefresh
-        ? SmartRefresher(
-            scrollDirection: this.scrollDirection,
-            enablePullDown: true,
-            enablePullUp: canPullUp,
-            controller: this.refreshController!,
-            onRefresh: this.onRefresh != null
-                ? () {
-                    this.onRefresh!();
-                  }
-                : null,
-            onLoading: this.onLoading != null
-                ? () {
-                    this.onLoading!();
-                  }
-                : null,
-            child: _getListView(),
-          )
-        : _getListView();
-  }
-
-  //get listview
-  Widget _getListView() {
-    //
     if (this.items != null && this.items!.isNotEmpty) {
       return GridView.count(
         crossAxisCount: crossAxisCount,
@@ -145,3 +89,84 @@ class CustomGridView extends StatelessWidget {
     );
   }
 }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return this.justList
+  //       ? _getBody()
+  //       : VStack(
+  //           [
+  //             this.title ?? UiSpacer.emptySpace(),
+  //             _getBody(),
+  //           ],
+  //           crossAlignment: CrossAxisAlignment.start,
+  //         );
+  // }
+
+  // Widget _getBody() {
+  //   return this.isLoading
+  //       ? this.loadingWidget ?? LoadingShimmer()
+  //       : this.hasError
+  //           ? this.errorWidget ?? EmptyState()
+  //           : this.justList
+  //               ? (this.dataSet == null || this.dataSet!.isEmpty)
+  //                   ? this.emptyWidget ?? UiSpacer.emptySpace()
+  //                   : _getBodyList()
+  //               : Expanded(
+  //                   child: _getBodyList(),
+  //                 );
+  // }
+
+  // //
+  // Widget _getBodyList() {
+  //   return this.canRefresh
+  //       ? SmartRefresher(
+  //           scrollDirection: this.scrollDirection,
+  //           enablePullDown: true,
+  //           enablePullUp: canPullUp,
+  //           controller: this.refreshController!,
+  //           onRefresh: this.onRefresh != null
+  //               ? () {
+  //                   this.onRefresh!();
+  //                 }
+  //               : null,
+  //           onLoading: this.onLoading != null
+  //               ? () {
+  //                   this.onLoading!();
+  //                 }
+  //               : null,
+  //           child: _getListView(),
+  //         )
+  //       : _getListView();
+  // }
+
+  // //get listview
+  // Widget _getListView() {
+  //   //
+  //   if (this.items != null && this.items!.isNotEmpty) {
+  //     return GridView.count(
+  //       crossAxisCount: crossAxisCount,
+  //       children: this.items ?? [],
+  //       padding: this.padding,
+  //       physics: this.noScrollPhysics ? NeverScrollableScrollPhysics() : null,
+  //       shrinkWrap: true,
+  //       reverse: this.reversed,
+  //       scrollDirection: this.scrollDirection,
+  //     );
+  //   }
+  //   return GridView.builder(
+  //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //       crossAxisCount: this.crossAxisCount,
+  //       childAspectRatio: this.childAspectRatio,
+  //       crossAxisSpacing: this.crossAxisSpacing,
+  //       mainAxisSpacing: this.mainAxisSpacing,
+  //     ),
+  //     padding: this.padding,
+  //     physics: this.noScrollPhysics ? NeverScrollableScrollPhysics() : null,
+  //     shrinkWrap: true,
+  //     itemBuilder: this.itemBuilder,
+  //     itemCount: this.dataSet?.length ?? 0,
+  //     reverse: this.reversed,
+  //     scrollDirection: this.scrollDirection,
+  //   );
+  // }
+
