@@ -12,6 +12,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
               name: AppRoutes.profileRoute,
               arguments: settings.arguments as Object));
     default:
-      return MaterialPageRoute(builder: ((context) => BottomNavController()));
+      return MaterialPageRoute(builder: ((context) => CustomBottomNavBar()));
   }
 }

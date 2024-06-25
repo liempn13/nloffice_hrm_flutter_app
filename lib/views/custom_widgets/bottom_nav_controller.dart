@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BottomNavController extends StatefulWidget {
-  const BottomNavController({super.key});
+class CustomBottomNavBar extends StatefulWidget {
+  const CustomBottomNavBar({super.key});
 
   @override
-  State<BottomNavController> createState() => _BottomNavControllerState();
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
 
-class _BottomNavControllerState extends State<BottomNavController> {
+class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   int _selectIndex = 0;
   @override
   Widget build(BuildContext context) {

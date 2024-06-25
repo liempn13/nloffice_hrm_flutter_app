@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/constant/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode themeMode = ThemeMode.light;
+
+  bool get isDarkMode => themeMode == ThemeMode.dark;
+
+  void toggleTheme(bool isOn) {
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
+}
+
 class AppTheme {
   //
   ThemeData lightTheme() {
