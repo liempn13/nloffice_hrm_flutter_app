@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_button.dart';
 import 'package:nloffice_hrm/views/screen/auth/login/login_screen.dart';
 
-class Wellcome extends StatelessWidget {
+class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

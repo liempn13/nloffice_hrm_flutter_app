@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NoConnectionPage extends StatefulWidget {
-  const NoConnectionPage({Key? key}) : super(key: key);
-  @override
-  NoConnectionPageState createState() => NoConnectionPageState();
-}
-
-class NoConnectionPageState extends State<NoConnectionPage> {
-  NoConnectionPageState();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class NoInternetScreen extends StatelessWidget {
+  const NoInternetScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +17,8 @@ class NoConnectionPageState extends State<NoConnectionPage> {
                 size: 100,
                 color: Colors.deepPurple,
               ),
-             const Padding(
-                padding:  EdgeInsets.all(16.0),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Text(
                   'Oops, something went wrong',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -41,9 +30,11 @@ class NoConnectionPageState extends State<NoConnectionPage> {
                   Navigator.canPop(context);
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
+                  backgroundColor: WidgetStateProperty.all(Colors.deepPurple),
                 ),
-                child: const Text('Back',),
+                child: const Text(
+                  'Back',
+                ),
               ),
             ],
           ),

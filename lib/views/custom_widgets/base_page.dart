@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:nloffice_hrm/constant/internet_connect.dart';
 import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
-// import 'package:sod_delivery/utils/utils.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:nloffice_hrm/views/screen/no_connection_page.dart';
+import 'package:provider/provider.dart';
 
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,6 +26,7 @@ class BasePage extends StatefulWidget {
   final Widget? leading;
   final Widget? bottomNavigationBar;
   final List<Widget>? actions;
+  final AppBar? appBar;
 
   BasePage({
     this.showAppBar = false,
@@ -43,6 +46,7 @@ class BasePage extends StatefulWidget {
     this.backgroundColor,
     this.bottomNavigationBar,
     this.actions,
+    this.appBar,
     Key? key,
   }) : super(key: key);
 
@@ -53,57 +57,57 @@ class BasePage extends StatefulWidget {
 class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: translator.activeLocale.languageCode == "ar"
-          ? TextDirection.rtl
-          : TextDirection.ltr,
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor:
-            widget.backgroundColor ?? Theme.of(context).colorScheme.background,
-        extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
-        appBar: widget.showAppBar
-            ? AppBar(
-                actions: widget.actions,
-                backgroundColor: widget.appBarColor ?? context.primaryColor,
-                automaticallyImplyLeading: widget.showLeadingAction,
-                elevation: widget.elevation,
-                // leading: widget.showLeadingAction
-                // ? widget.leading == null
-                //     ? IconButton(
-                //         icon: Icon(
-                //           !Utils.isArabic
-                //               ? FlutterIcons.arrow_left_fea
-                //               : FlutterIcons.arrow_right_fea,
-                //         ),
-                //         onPressed: (widget.onBackPressed != null)
-                //             ? () => widget.onBackPressed!()
-                //             : () => Navigator.pop(context),
-                //       )
-                //     : widget.leading
-                // : null,
-                title: Text(
-                  "${widget.title}",
-                ),
-              )
-            : null,
-        body: VStack(
-          [
-            //
-            widget.isLoading
-                ? LinearProgressIndicator()
-                : UiSpacer.emptySpace(),
+    context.watch<ConnectivityProvider>().initialise(context);
 
-            //
-            widget.body.expand(),
-          ],
-        ),
-        bottomNavigationBar: widget.bottomNavigationBar,
+    final isConnected = context.watch<ConnectivityProvider>().isConnected;
+    return SafeArea(
+      child: isConnected != true
+          ? const NoInternetScreen()
+          : Scaffold(
+              resizeToAvoidBottomInset: false,
+              backgroundColor: widget.backgroundColor ??
+                  Theme.of(context).colorScheme.surface,
+              extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
+              appBar: widget.showAppBar
+                  ? widget.appBar ??
+                      AppBar(
+                        actions: widget.actions,
+                        backgroundColor:
+                            widget.appBarColor ?? context.primaryColor,
+                        automaticallyImplyLeading: widget.showLeadingAction,
+                        elevation: widget.elevation,
+                        leading: widget.showLeadingAction
+                            ? widget.leading ??
+                                IconButton(
+                                  icon: const Icon(
+                                    FlutterIcons.arrow_right_fea,
+                                  ),
+                                  onPressed: (widget.onBackPressed != null)
+                                      ? () => widget.onBackPressed!()
+                                      : () => Navigator.pop(context),
+                                )
+                            : null,
+                        title: Text(
+                          "${widget.title}",
+                        ),
+                      )
+                  : null,
+              body: VStack(
+                [
+                  //
+                  widget.isLoading
+                      ? LinearProgressIndicator()
+                      : UiSpacer.emptySpace(),
+                  //
+                  widget.body.expand(),
+                ],
+              ),
+              bottomNavigationBar: widget.bottomNavigationBar,
 
-        bottomSheet: widget.bottomSheet,
-        floatingActionButton: widget.fab,
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      ),
+              bottomSheet: widget.bottomSheet,
+              floatingActionButton: widget.fab,
+              // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            ),
     );
   }
 }

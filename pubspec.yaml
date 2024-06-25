@@ -22,7 +22,9 @@ dependencies:
   custom_clippers: ^2.0.0
   easy_localization: ^3.0.2
   device_info_plus: ^9.0.2
-
+  provider: ^6.0.2
+  lottie: ^3.1.0
+  cached_network_image: ^3.2.0
   flutter_icons:
     git:
       url: https://github.com/imclerran/flutter-icons.git
