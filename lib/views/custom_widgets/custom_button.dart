@@ -68,6 +68,7 @@ class CustomButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
         ),
+
         // onPressed: (this.loading || this.onPressed == null)
         //     ? null
         //     : () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_button.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_grid_view.dart';
 
@@ -47,32 +48,7 @@ class MenuScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 6.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.calendar_today),
-                onPressed: () {},
-              ),
-              SizedBox(width: 40), // The dummy child
-              IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.account_circle),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
+        bottomNavigationBar: BottomNavController(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.apps_rounded),

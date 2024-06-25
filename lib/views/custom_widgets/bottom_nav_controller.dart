@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/views/screen/home_screen.dart';
 
 class BottomNavController extends StatefulWidget {
   const BottomNavController({super.key});
@@ -13,13 +14,39 @@ class _BottomNavControllerState extends State<BottomNavController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: MediaQuery.sizeOf(context).width <= 834
-          ? BottomNavigationBar(
-              // backgroundColor: Colors.white,
-              items: <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: 'home'),
-                  BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'more')
-                ])
+          ? BottomAppBar(
+              shape: CircularNotchedRectangle(),
+              notchMargin: 6.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.calendar_today),
+                    onPressed: () {},
+                  ),
+                  SizedBox(width: 40), // The dummy child
+                  IconButton(
+                    icon: Icon(Icons.notifications),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.menu_rounded),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            )
           : NavigationRail(
               groupAlignment: -1.0,
               labelType: NavigationRailLabelType.all,
