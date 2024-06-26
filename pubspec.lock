@@ -430,6 +430,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2-dev"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      sha256: "7ad7215c15420a102ec687bb320a7312afd449bac63bfb1c60d9787c27b9767f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   lottie:
     dependency: "direct main"
     description:
@@ -465,11 +473,12 @@ packages:
   mysql_client:
     dependency: "direct main"
     description:
-      name: mysql_client
-      sha256: "6a0fdcbe3e0721c637f97ad24649be2f70dbce2b21ede8f962910e640f753fc2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.27"
+      path: "."
+      ref: logging
+      resolved-ref: c271535daa1487a16bb3886326498a30b4acd4fe
+      url: "https://github.com/zim32/mysql.dart.git"
+    source: git
+    version: "0.0.26"
   nested:
     dependency: transitive
     description:

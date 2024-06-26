@@ -7,8 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:nloffice_hrm/constant/app_languages.dart';
 import 'package:nloffice_hrm/constant/app_theme.dart';
+import 'package:nloffice_hrm/constant/shared_preferences.dart';
+import 'package:nloffice_hrm/services/notification.service.dart';
 import 'package:nloffice_hrm/views/route_service.dart' as router;
-import 'package:nloffice_hrm/views/screen/auth/login/login_screen.dart';
+import 'package:nloffice_hrm/views/screen/home_screen.dart';
+import 'package:nloffice_hrm/views/screen/welcome_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -61,7 +64,7 @@ class MainApp extends StatelessWidget {
             // open your app when is executed from outside when is terminated.
             return router.generateRoute(settings);
           },
-          home: LoginScreen(),
+          home: HomeScreen(),
           theme: theme,
           darkTheme: darkTheme,
         );
@@ -77,15 +80,15 @@ Future<void> getDeviceId() async {
     var iosDeviceInfo = await deviceInfo.iosInfo;
     final result =
         '${iosDeviceInfo.name}-${iosDeviceInfo.model}-${iosDeviceInfo.identifierForVendor}';
-    // SPUtill.setValue(SPUtill.keyIosDeviceToken, result);
+    SPUtill.setValue(SPUtill.keyIosDeviceToken, result);
     // return iosDeviceInfo.identifierForVendor; // unique ID on iOS
   } else {
     final androidDeviceInfo = await deviceInfo.androidInfo;
     final result =
         '${androidDeviceInfo.brand}-${androidDeviceInfo.device}-${androidDeviceInfo.id}';
-    // SPUtill.setValue(SPUtill.keyAndroidDeviceToken, result);
-    // final map = androidDeviceInfo.toMap();
-    // print('Device Map: $map');
+    SPUtill.setValue(SPUtill.keyAndroidDeviceToken, result);
+    final map = androidDeviceInfo.toMap();
+    print('Device Map: $map');
     // return androidDeviceInfo.androidId; // unique ID on Android
   }
 }

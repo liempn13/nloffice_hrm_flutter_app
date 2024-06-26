@@ -3,8 +3,16 @@ import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_button.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_grid_view.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
+  const MenuScreen({super.key});
+
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   List<String> labelList = ['Support', 'Attendance', 'Task', 'Notice', ''];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +67,7 @@ class MenuScreen extends StatelessWidget {
   }
 }
 
-class UserInfo extends StatelessWidget {
+class UserInfo extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
     return Row(

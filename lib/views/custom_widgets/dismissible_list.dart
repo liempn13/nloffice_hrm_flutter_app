@@ -8,7 +8,7 @@ class DismissibleList extends StatefulWidget {
 }
 
 class _DismissibleListState extends State<DismissibleList> {
-  final List<String> notiList = [];
+  final List<String> notiList = []; 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
