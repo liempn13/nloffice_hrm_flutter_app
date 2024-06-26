@@ -27,6 +27,7 @@ class BasePage extends StatefulWidget {
   final Widget? bottomNavigationBar;
   final List<Widget>? actions;
   final AppBar? appBar;
+  final Drawer? drawer;
 
   BasePage({
     this.showAppBar = false,
@@ -46,6 +47,7 @@ class BasePage extends StatefulWidget {
     this.backgroundColor,
     this.bottomNavigationBar,
     this.actions,
+    this.drawer,
     this.appBar,
     Key? key,
   }) : super(key: key);
@@ -64,6 +66,7 @@ class _BasePageState extends State<BasePage> {
       child: isConnected != true
           ? const NoInternetScreen()
           : Scaffold(
+              drawer: widget.drawer,
               resizeToAvoidBottomInset: false,
               backgroundColor: widget.backgroundColor ??
                   Theme.of(context).colorScheme.surface,

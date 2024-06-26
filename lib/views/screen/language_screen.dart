@@ -23,6 +23,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
       'image':
           'https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQVhwOar0FyOb_mmItcTAQFv1O4k8S_ZUEAI45O7dYC2rXRUWD-nWJwOQWJS2va8krELcDtY0JEVdQabkDkEdo',
     },
+    {
+      'name': 'VietNam',
+      'image':
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/125px-Flag_of_Vietnam.svg.png',
+    }
     // {
     //   'name': 'Bangla',
     //   'image':
@@ -38,11 +43,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
     //   'image':
     //       'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png',
     // },
-    {
-      'name': 'VietNam',
-      'image':
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/125px-Flag_of_Vietnam.svg.png',
-    }
   ];
 
   @override
@@ -80,12 +80,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (context) => const CustomBottomNavBar(
-                    // bottomNavigationIndex: 0
-                    )),
-            (Route<dynamic> route) => true);
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(
+        //         builder: (context) => const CustomBottomNavBar(
+        //             // bottomNavigationIndex: 0
+        //             )),
+        //     (Route<dynamic> route) => true);
         return true;
       },
       child: Scaffold(
@@ -156,12 +156,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 if (selectedIndex == 0) {
                                   context.setLocale(const Locale('en', 'US'));
                                 } else if (selectedIndex == 1) {
-                                  context.setLocale(const Locale('bn', 'BN'));
-                                } else if (selectedIndex == 2) {
-                                  context.setLocale(const Locale('ar', 'AR'));
-                                } else if (selectedIndex == 3) {
-                                  context.setLocale(const Locale('es', 'ES'));
-                                } else if (selectedIndex == 4) {
                                   context.setLocale(const Locale('vi', 'VN'));
                                 }
                                 getSelectedLanguage();

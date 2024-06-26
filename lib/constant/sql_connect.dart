@@ -9,5 +9,5 @@ Future<void> connectSQL() async {
       userName: 'root',
       password: '');
   connection.connect();
-  // var res = await connection.execute('select * from salary');
+  var res = await connection.execute('select * account');
 }

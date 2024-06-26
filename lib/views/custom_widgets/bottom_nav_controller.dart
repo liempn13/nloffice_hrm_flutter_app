@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
 import 'package:nloffice_hrm/views/screen/home_screen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -23,12 +24,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   IconButton(
                     icon: Icon(Icons.home),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
-                        ),
-                      );
+                      AppRoutes.homeRoute;
                     },
                   ),
                   IconButton(
