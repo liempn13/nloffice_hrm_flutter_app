@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/auth/login/login_email_screen.dart';
-import 'package:nloffice_hrm/views/screen/auth/login/login_phone_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgePasswordScreen extends StatelessWidget {
+  const ForgePasswordScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _TapBarState();
-}
-
-class _TapBarState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -73,8 +66,8 @@ class _TapBarState extends State<LoginScreen> {
             Expanded(
               child: TabBarView(
                 children: [
-                  Center(child: LoginEmail(title: 'Login')),
-                  Center(child: LoginPhone(title: 'Login')),
+                  // Center(child: LoginEmail(title: 'Login')),
+                  // Center(child: LoginPhone(title: 'Login')),
                 ],
               ),
             ),
@@ -89,7 +82,7 @@ class _TapBarState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Welcome Back",
+          "Forgot password",
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 30,
@@ -97,7 +90,7 @@ class _TapBarState extends State<LoginScreen> {
           ),
         ),
         Text(
-          'Login to continue',
+          'Enter to retrieve password',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
       ],

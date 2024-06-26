@@ -24,79 +24,77 @@ class _LoginPhoneState extends State<LoginPhone> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .02,
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextFormField(
-                                  controller: phoneController,
-                                  scrollPadding: EdgeInsets.only(bottom: 150),
-                                  style: TextStyle(fontSize: 18),
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.phone),
-                                    labelText: "Enter your phone number",
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    fillColor: Color(0xfff3f3f4),
-                                    filled: true,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .02,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextFormField(
+                                controller: phoneController,
+                                scrollPadding: EdgeInsets.only(bottom: 150),
+                                style: TextStyle(fontSize: 18),
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.phone),
+                                  labelText: "Enter your phone number",
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your phone number';
-                                    } else if (!RegExp(r'^\d{10}$')
-                                        .hasMatch(value)) {
-                                      return 'Please enter a valid phone number';
-                                    }
-                                    return null;
-                                  },
+                                  fillColor: Color(0xfff3f3f4),
+                                  filled: true,
                                 ),
-                              ],
-                            ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your phone number';
+                                  } else if (!RegExp(r'^\d{10}$')
+                                      .hasMatch(value)) {
+                                    return 'Please enter a valid phone number';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      _LogInButton(),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        child: Center(
-                          child: Text(
-                            'OR',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _LogInButton(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Center(
+                        child: Text(
+                          'OR',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      _createAccount(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      _loginGoogle()
-                    ],
-                  ),
+                    ),
+                    _createAccount(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _loginGoogle()
+                  ],
                 ),
               ),
             ),
@@ -132,7 +130,7 @@ class _LoginPhoneState extends State<LoginPhone> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: <Color>[
-              Color.fromARGB(255, 250, 3, 3),
+              Colors.blue,
               Color.fromARGB(255, 255, 12, 4),
             ],
           ),
@@ -159,7 +157,7 @@ class _LoginPhoneState extends State<LoginPhone> {
               children: [
                 TextSpan(
                   text: 'Create An Account',
-                  style: const TextStyle(fontSize: 16, color: Colors.red),
+                  style: const TextStyle(fontSize: 16, color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       Navigator.push(
@@ -198,7 +196,7 @@ class _LoginPhoneState extends State<LoginPhone> {
               height: 40,
             ),
             SizedBox(
-              width: 40,
+              width: 15,
             ),
             Text(
               'Sign in with Google',

@@ -29,6 +29,7 @@ dependencies:
     git:
       url: https://github.com/zim32/mysql.dart.git
       ref: logging
+  email_otp: ^3.0.1
   flutter_icons:
     git:
       url: https://github.com/imclerran/flutter-icons.git
