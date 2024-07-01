@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 
 class ForgePasswordScreen extends StatelessWidget {
   const ForgePasswordScreen({super.key});
@@ -7,7 +8,7 @@ class ForgePasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
+      child: BasePage(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,

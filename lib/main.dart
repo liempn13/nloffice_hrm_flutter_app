@@ -8,9 +8,7 @@ import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:nloffice_hrm/constant/app_languages.dart';
 import 'package:nloffice_hrm/constant/app_theme.dart';
 import 'package:nloffice_hrm/constant/shared_preferences.dart';
-import 'package:nloffice_hrm/services/notification.service.dart';
 import 'package:nloffice_hrm/views/route_service.dart' as router;
-import 'package:nloffice_hrm/views/screen/home_screen.dart';
 import 'package:nloffice_hrm/views/screen/welcome_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -64,7 +62,7 @@ class MainApp extends StatelessWidget {
             // open your app when is executed from outside when is terminated.
             return router.generateRoute(settings);
           },
-          home: HomeScreen(),
+          home: WelcomeScreen(),
           theme: theme,
           darkTheme: darkTheme,
         );

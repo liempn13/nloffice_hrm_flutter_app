@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:nloffice_hrm/constant/internet_connect.dart';
 import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
-import 'package:nloffice_hrm/views/screen/no_connection_page.dart';
-import 'package:provider/provider.dart';
-
 import 'package:velocity_x/velocity_x.dart';
 
 class BasePage extends StatefulWidget {
@@ -16,7 +11,8 @@ class BasePage extends StatefulWidget {
   final String? title;
   final Widget body;
   final Widget? bottomSheet;
-  final Widget? fab;
+  final FloatingActionButtonLocation? fabl;
+  final FloatingActionButton? fab;
   final bool isLoading;
   final bool extendBodyBehindAppBar;
   final double? elevation;
@@ -30,6 +26,7 @@ class BasePage extends StatefulWidget {
   final Drawer? drawer;
 
   BasePage({
+    this.fabl,
     this.showAppBar = false,
     this.showLeadingAction = false,
     this.leading,
@@ -59,58 +56,60 @@ class BasePage extends StatefulWidget {
 class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
-    context.watch<ConnectivityProvider>().initialise(context);
+    // context.watch<ConnectivityProvider>().initialise(context);
 
-    final isConnected = context.watch<ConnectivityProvider>().isConnected;
+    // final isConnected = context.watch<ConnectivityProvider>().isConnected;
     return SafeArea(
-      child: isConnected != true
-          ? const NoInternetScreen()
-          : Scaffold(
-              drawer: widget.drawer,
-              resizeToAvoidBottomInset: false,
-              backgroundColor: widget.backgroundColor ??
-                  Theme.of(context).colorScheme.surface,
-              extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
-              appBar: widget.showAppBar
-                  ? widget.appBar ??
-                      AppBar(
-                        actions: widget.actions,
-                        backgroundColor:
-                            widget.appBarColor ?? context.primaryColor,
-                        automaticallyImplyLeading: widget.showLeadingAction,
-                        elevation: widget.elevation,
-                        leading: widget.showLeadingAction
-                            ? widget.leading ??
-                                IconButton(
-                                  icon: const Icon(
-                                    FlutterIcons.arrow_right_fea,
-                                  ),
-                                  onPressed: (widget.onBackPressed != null)
-                                      ? () => widget.onBackPressed!()
-                                      : () => Navigator.pop(context),
-                                )
-                            : null,
-                        title: Text(
-                          "${widget.title}",
-                        ),
-                      )
-                  : null,
-              body: VStack(
-                [
-                  //
-                  widget.isLoading
-                      ? LinearProgressIndicator()
-                      : UiSpacer.emptySpace(),
-                  //
-                  widget.body.expand(),
-                ],
-              ),
-              bottomNavigationBar: widget.bottomNavigationBar,
-
-              bottomSheet: widget.bottomSheet,
-              floatingActionButton: widget.fab,
-              // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-            ),
+      child:
+          // isConnected != true
+          // ?
+          // const NoInternetScreen()
+          // :
+          Scaffold(
+        drawer: widget.drawer,
+        resizeToAvoidBottomInset: false,
+        backgroundColor:
+            widget.backgroundColor ?? Theme.of(context).colorScheme.surface,
+        extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
+        appBar: widget.showAppBar
+            ? widget.appBar ??
+                AppBar(
+                  actions: widget.actions,
+                  backgroundColor: widget.appBarColor ?? context.primaryColor,
+                  automaticallyImplyLeading: widget.showLeadingAction,
+                  elevation: widget.elevation,
+                  leading: widget.showLeadingAction
+                      ? widget.leading ??
+                          IconButton(
+                            icon: const Icon(
+                              FlutterIcons.arrow_right_fea,
+                            ),
+                            onPressed: (widget.onBackPressed != null)
+                                ? () => widget.onBackPressed!()
+                                : () => Navigator.pop(context),
+                          )
+                      : null,
+                  title: Text(
+                    "${widget.title}",
+                  ),
+                )
+            : null,
+        body: VStack(
+          [
+            //
+            widget.isLoading
+                ? LinearProgressIndicator()
+                : UiSpacer.emptySpace(),
+            //
+            widget.body.expand(),
+          ],
+        ),
+        bottomNavigationBar: widget.bottomNavigationBar,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomSheet: widget.bottomSheet,
+        floatingActionButton: widget.fab,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      ),
     );
   }
 }

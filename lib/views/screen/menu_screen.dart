@@ -1,153 +1,200 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
+import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
-import 'package:nloffice_hrm/views/custom_widgets/custom_button.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_grid_view.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
-
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  _MenuScreenState createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  List<String> labelList = ['Support', 'Attendance', 'Task', 'Notice', ''];
+  final RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+  String _departmentTitle = 'Phòng ban';
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              UserInfo(),
-              SizedBox(height: 20),
-              CustomGridView(
-                  dataSet: labelList,
-                  itemBuilder: (context, index) {
-                    return CustomButton(
-                      title: index.toString(),
-                    );
-                  })
-              // Expanded(
-              //   child: GridView.count(
-              //     crossAxisCount: 2,
-              //     crossAxisSpacing: 16.0,
-              //     mainAxisSpacing: 20.0,
-              //     children: [
-              //       CustomButton(),
-              //       MenuButton(icon: Icons.support_agent, label: 'Support'),
-              //       MenuButton(icon: Icons.access_time, label: 'Attendance'),
-              //       MenuButton(icon: Icons.assignment, label: 'Task'),
-              //       MenuButton(icon: Icons.announcement, label: 'Notice'),
-              //       MenuButton(
-              //           icon: Icons.account_balance_wallet, label: 'Expense'),
-              //       MenuButton(icon: Icons.exit_to_app, label: 'Leave'),
-              //       MenuButton(icon: Icons.check_circle, label: 'Approval'),
-              //       MenuButton(icon: Icons.phone, label: 'Phonebook'),
-              //       MenuButton(icon: Icons.map, label: 'Visit'),
-              //       MenuButton(icon: Icons.calendar_today, label: 'Appointments'),
-              //       MenuButton(icon: Icons.coffee, label: 'Break'),
-              //       MenuButton(icon: Icons.bar_chart, label: 'Report'),
-              //     ],
-              //   ),
-              // ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.apps_rounded),
-          onPressed: () {},
-        ),
-      ),
-    );
+  void initState() {
+    super.initState();
+    _loadDepartmentTitle();
   }
-}
 
-class UserInfo extends StatelessWidget { 
+  Future<void> _loadDepartmentTitle() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _departmentTitle = prefs.getString('departmentsTitle') ?? 'Phòng ban';
+    });
+  }
+
+  void _onRefresh() {
+    _refreshController.refreshCompleted();
+  }
+
+  void _onLoading() {
+    _refreshController.loadComplete();
+  }
+
+  List<Map<String, dynamic>> _getData() {
+    return [
+      {
+        'icon': Icons.supervisor_account,
+        'text': 'Nhân viên',
+        'route': AppRoutes.profileListRoute
+      },
+      {
+        'icon': Icons.groups_rounded,
+        'text': _departmentTitle,
+        'route': AppRoutes.departmentListRoute
+      },
+      {
+        'icon': Icons.assignment, 'text': 'Task',
+        // 'route': AppRoutes.taskRoute
+      },
+      {
+        'icon': Icons.announcement,
+        'text': 'Notice',
+        // 'route': AppRoutes.noticeRoute
+      },
+      {
+        'icon': Icons.account_balance_wallet,
+        'text': 'Expense',
+        // 'route': AppRoutes.expenseRoute
+      },
+      {
+        'icon': Icons.approval,
+        'text': 'Approval',
+        // 'route': AppRoutes.approvalRoute
+      },
+      {
+        'icon': Icons.phone,
+        'text': 'Phonebook',
+        // 'route': AppRoutes.phonebookRoute
+      },
+      {
+        'icon': Icons.event,
+        'text': 'Appointments',
+        // 'route': AppRoutes.appointmentsRoute
+      },
+      {
+        'icon': Icons.map, 'text': 'Visit',
+        //  'route': AppRoutes.visitRoute
+      },
+      {
+        'icon': Icons.coffee, 'text': 'Break',
+        //  'route': AppRoutes.breakRoute
+      },
+      {
+        'icon': Icons.report, 'text': 'Report',
+        // 'route': AppRoutes.reportRoute
+      },
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.black,
-        ),
-        SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Admin',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            GestureDetector(
-              onTap: () {
-                // View profile action
-              },
-              child: Text(
-                'VIEW PROFILE',
-                style: TextStyle(color: Colors.brown),
+    final data = _getData();
+    return BasePage(
+      showAppBar: true,
+      showLeadingAction: false,
+      appBar: AppBar(
+        title: UserInfo(),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.account_circle),
+        )
+      ],
+      body: CustomGridView(
+        crossAxisCount: 2,
+        childAspectRatio: 1.0,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+        padding: EdgeInsets.all(8.0),
+        dataSet: data,
+        itemBuilder: (context, index) {
+          final item = data[index];
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(item['route']);
+            },
+            child: Container(
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(item['icon'], size: 40),
+                  SizedBox(height: 8),
+                  Text(item['text'], style: TextStyle(fontSize: 16)),
+                ],
               ),
             ),
-          ],
-        ),
-        Spacer(),
-        IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
-        ),
-      ],
+          );
+        },
+      ),
+      bottomNavigationBar: CustomBottomNavBar(),
+      fabl: FloatingActionButtonLocation.centerDocked,
+      fab: FloatingActionButton(
+        child: Icon(Icons.apps_rounded),
+        onPressed: () {
+          Navigator.of(context).pushNamed(AppRoutes.menuRoute);
+        },
+      ),
     );
   }
 }
 
-class MenuButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-
-  MenuButton({required this.icon, required this.label});
-
+class UserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomButton(
-      backgroundcolor: Colors.brown[50],
-      foregroundColor: Colors.brown,
-      padding: EdgeInsets.all(16.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.black,
+          ),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Admin',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // View profile action
+                },
+                child: Text(
+                  'VIEW PROFILE',
+                  style: TextStyle(color: Colors.brown),
+                ),
+              ),
+            ],
+          ),
+          Spacer(),
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {},
+          ),
+        ],
       ),
-      onPressed: () {
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 40),
-            SizedBox(height: 10),
-            Text(label),
-          ],
-        );
-      },
-    ); //   return ElevatedButton(
-    //     style: ElevatedButton.styleFrom(
-    //       backgroundColor: Colors.brown[50], // màu nền nút
-    //       foregroundColor: Colors.brown, //màu item bên trong
-    //       padding: EdgeInsets.all(16.0),
-    //       shape: RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.circular(8.0),
-    //       ),
-    //     ),
-    //     onPressed: () {},
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: [
-    //         Icon(icon, size: 40),
-    //         SizedBox(height: 10),
-    //         Text(label),
-    //       ],
-    //     ),
-    //   );
+    );
   }
 }
