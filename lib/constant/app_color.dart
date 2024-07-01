@@ -4,7 +4,6 @@ class AppColor {
   static Color get primaryColor => Colors.blue;
   static Color get primaryDarkColor => Colors.blue;
   static Color get accentColor => Colors.amber;
-  Color white = Colors.white;
   static Color get accentDarkColor => Colors.amber;
   static Color get borderColor => Colors.amber;
   static Color get borderDarkColor => Colors.amber;

@@ -13,6 +13,7 @@ dependencies:
   adaptive_theme: ^3.3.0
   localize_and_translate: ^4.1.1
   # mysql_client: ^0.0.27
+  # mysql_client: ^0.0.27
   animate_do: ^3.0.2
   http: ^1.2.0
   velocity_x: ^4.2.1
@@ -25,10 +26,10 @@ dependencies:
   provider: ^6.0.2
   lottie: ^3.1.0
   cached_network_image: ^3.2.0
-  # mysql_client:
-  #   git:
-  #     url: https://github.com/zim32/mysql.dart.git
-  #     ref: logging
+  mysql_client:
+    git:
+      url: https://github.com/zim32/mysql.dart.git
+      ref: logging
   email_otp: ^3.0.1
   flutter_icons:
     git:

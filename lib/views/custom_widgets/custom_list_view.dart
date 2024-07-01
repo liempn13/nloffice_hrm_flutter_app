@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:nloffice_hrm/views/custom_widgets/custom_text_form_field.dart';
 import 'package:nloffice_hrm/views/custom_widgets/ui_spacer.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
@@ -18,6 +20,7 @@ class CustomListView extends StatelessWidget {
   final List<Tab>? tabList;
   final bool noScrollPhysics;
   final bool showSearchBar;
+  final bool showTabBar;
   final Axis scrollDirection;
   final EdgeInsets? padding;
   final Widget Function(BuildContext, int) itemBuilder;
@@ -33,6 +36,7 @@ class CustomListView extends StatelessWidget {
     required this.dataSet,
     this.scrollController,
     this.showSearchBar = false,
+    this.showTabBar = false,
     this.title,
     this.loadingWidget,
     this.errorWidget,
@@ -60,59 +64,32 @@ class CustomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: title,
-        backgroundColor: Colors.brown[300],
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Action for back button
-          },
-        ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                showSearchBar
-                    ? TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          hintText: 'search',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      )
-                    : Padding(
-                        padding: EdgeInsets.all(1),
-                      ),
-                SizedBox(height: 10),
-                DefaultTabController(
-                    length: tabLength,
-                    child: TabBar(
-                        labelColor: Colors.white,
-                        indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black,
-                              )
-                            ]),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        tabs: tabList!)),
-                Expanded(
-                    child: TabBarView(
-                  children: [],
-                ))
-              ],
-            ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              showSearchBar
+                  ? CustomTextFormField(
+                      maxLines: 3,
+                      hintText: 'search'.tr(),
+                      prefixIcon: Icon(Icons.search),
+                    )
+                  //  border: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(20),
+                  //         ),
+                  : UiSpacer.emptySpace(),
+              showTabBar ? tabView() : UiSpacer.emptySpace(),
+              Expanded(
+                  child: TabBarView(
+                children: [],
+              )),
+              listView()
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -155,8 +132,8 @@ class CustomListView extends StatelessWidget {
   //       : contentBody;
   // }
 
-  //get listview
-  Widget _getListView() {
+  //Listview
+  Widget listView() {
     return ListView.separated(
       controller: this.scrollController,
       padding: this.padding,
@@ -171,5 +148,22 @@ class CustomListView extends StatelessWidget {
               ? UiSpacer.verticalSpace(space: separator ?? 20.0)
               : UiSpacer.horizontalSpace(space: separator ?? 20.0),
     );
+  }
+
+  //Tab
+  Widget tabView() {
+    return DefaultTabController(
+        length: this.tabLength,
+        child: TabBar(
+            labelColor: Colors.white,
+            indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                  )
+                ]),
+            indicatorSize: TabBarIndicatorSize.tab,
+            tabs: this.tabList!));
   }
 }
