@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/sign_up_screen.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
+import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 
 class LoginPhone extends StatefulWidget {
   final String title;
@@ -17,99 +18,92 @@ class _LoginPhoneState extends State<LoginPhone> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .02,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextFormField(
-                                controller: phoneController,
-                                scrollPadding: EdgeInsets.only(bottom: 150),
-                                style: TextStyle(fontSize: 18),
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.phone),
-                                  labelText: "Enter your phone number",
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  fillColor: Color(0xfff3f3f4),
-                                  filled: true,
+    return BasePage(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: IntrinsicHeight(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextFormField(
+                              controller: phoneController,
+                              scrollPadding: EdgeInsets.only(bottom: 150),
+                              style: TextStyle(fontSize: 18),
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.phone),
+                                labelText: "Enter your phone number",
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
                                 ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your phone number';
-                                  } else if (!RegExp(r'^\d{10}$')
-                                      .hasMatch(value)) {
-                                    return 'Please enter a valid phone number';
-                                  }
-                                  return null;
-                                },
+                                fillColor: Color(0xfff3f3f4),
+                                filled: true,
                               ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    _LogInButton(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: Center(
-                        child: Text(
-                          'OR',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your phone number';
+                                } else if (!RegExp(r'^\d{10}$')
+                                    .hasMatch(value)) {
+                                  return 'Please enter a valid phone number';
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            _logInButton(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Text(
+                                  'OR',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            _createAccount(),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            _loginGoogle()
+                          ],
                         ),
                       ),
                     ),
-                    _createAccount(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _loginGoogle()
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
-  Widget _LogInButton() {
+  Widget _logInButton() {
     return InkWell(
       onTap: () {
         if (_formKey.currentState!.validate()) {
           // Process the phone number
           print('Phone number: ${phoneController.text}');
+        } else {
+          Navigator.of(context).pushNamed(AppRoutes.homeRoute);
         }
       },
       child: Container(
@@ -160,12 +154,7 @@ class _LoginPhoneState extends State<LoginPhone> {
                   style: const TextStyle(fontSize: 16, color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CreateAcount(),
-                        ),
-                      );
+                      Navigator.of(context).pushNamed(AppRoutes.signupRoute);
                     },
                 ),
               ],

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Departments // phòng ban
 {
   Departments(
@@ -10,7 +8,7 @@ class Departments // phòng ban
   String? departmentID;
   String? departmentName;
   int? enterpriseID;
-  Int8? departmentStatus;
+  int? departmentStatus;
   //status
   factory Departments.fromJson(Map<String, dynamic> json) => Departments(
       departmentID: json["department_id"],

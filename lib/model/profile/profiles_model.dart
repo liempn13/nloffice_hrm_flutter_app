@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 class Profiles {
   Profiles(
       {this.profileName,
-      this.profileStatus,
+      this.profileStatus = 0,
       this.idExpireDay,
       this.identifiNum,
       this.gender,
@@ -16,10 +14,10 @@ class Profiles {
       this.birthday,
       this.positionId});
   String? profileName;
-  Int8? profileStatus;
+  int profileStatus;
   String? identifiNum;
   DateTime? idExpireDay;
-  Int8? gender;
+  int? gender;
   String? phone;
   String? email;
   String? departmentId;
@@ -56,4 +54,7 @@ class Profiles {
         "birthday": birthday,
         "position_id": positionId
       };
+  void deactivate() {
+    profileStatus = 0;
+  }
 }

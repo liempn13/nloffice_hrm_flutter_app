@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/views/screen/home_screen.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});
@@ -23,12 +23,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   IconButton(
                     icon: Icon(Icons.home),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
-                        ),
-                      );
+                      Navigator.of(context).pushNamed(AppRoutes.homeRoute);
                     },
                   ),
                   IconButton(
@@ -38,7 +33,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   SizedBox(width: 40), // The dummy child
                   IconButton(
                     icon: Icon(Icons.notifications),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(AppRoutes.tokenRoute);
+                    },
                   ),
                   IconButton(
                     icon: Icon(Icons.menu_rounded),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 import 'package:nloffice_hrm/views/screen/auth/login/login_email_screen.dart';
 import 'package:nloffice_hrm/views/screen/auth/login/login_phone_screen.dart';
 
@@ -14,7 +15,8 @@ class _TapBarState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
+      child: BasePage(
+        showAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
