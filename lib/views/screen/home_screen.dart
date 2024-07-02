@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/constant/app_route.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 
@@ -16,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      showAppBar: true,
       appBar: AppBar(
         backgroundColor: Color(0xFF0B258A),
         iconTheme: IconThemeData(color: Colors.white),
@@ -129,6 +131,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(),
+      fabl: FloatingActionButtonLocation.centerDocked,
+      fab: FloatingActionButton(
+        child: Icon(Icons.apps_rounded),
+        onPressed: () {
+          Navigator.of(context).pushNamed(AppRoutes.menuRoute);
+        },
+      ),
     );
   }
 }

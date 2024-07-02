@@ -1,17 +1,17 @@
 class Diplomas {
-  Diplomas({this.accountId, this.accountName, this.diplomaId});
-  String? accountId;
-  String? accountName;
+  Diplomas({this.profileId, this.diplomaName, this.diplomaId});
+  String? profileId;
+  String? diplomaName;
   String? diplomaId;
 
   factory Diplomas.fromJson(Map<String, dynamic> json) => Diplomas(
-        accountId: json["account_id"],
-        accountName: json["account_name"],
+        profileId: json["profile_id"],
+        diplomaName: json["diploma_name"],
         diplomaId: json["diploma_id"],
       );
   Map<String, dynamic> toJson() => {
-        "account_id": accountId,
-        "account_name": accountName,
+        "profile_id": profileId,
+        "account_name": diplomaName,
         "diploma_id": diplomaId
       };
 }

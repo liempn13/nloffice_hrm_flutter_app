@@ -50,23 +50,24 @@ class _MenuScreenState extends State<MenuScreen> {
         'route': AppRoutes.departmentListRoute
       },
       {
-        'icon': Icons.assignment, 'text': 'Task',
-        // 'route': AppRoutes.taskRoute
+        'icon': Icons.currency_exchange,
+        'text': 'Lương',
+        'route': AppRoutes.salariListRoute,
       },
       {
-        'icon': Icons.announcement,
-        'text': 'Notice',
-        // 'route': AppRoutes.noticeRoute
+        'icon': Icons.menu_book_outlined,
+        'text': 'Bằng cấp',
+        'route': AppRoutes.diplomaListRoute
       },
       {
-        'icon': Icons.account_balance_wallet,
-        'text': 'Expense',
-        // 'route': AppRoutes.expenseRoute
+        'icon': Icons.supervisor_account,
+        'text': 'Thân nhân',
+        'route': AppRoutes.relativeListRoute
       },
       {
-        'icon': Icons.approval,
-        'text': 'Approval',
-        // 'route': AppRoutes.approvalRoute
+        'icon': Icons.home_work_rounded,
+        'text': 'Doanh nghiệp',
+        'route': AppRoutes.enterpriseListRoute
       },
       {
         'icon': Icons.phone,

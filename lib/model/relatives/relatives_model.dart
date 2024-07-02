@@ -1,21 +1,21 @@
 class Relatives {
   Relatives(
-      {this.accountId,
+      {this.profileId,
       this.relativesName,
       this.relativesPhone,
       this.relativesBirthday});
-  String? accountId;
+  String? profileId;
   String? relativesName;
   String? relativesPhone;
   String? relativesBirthday;
   factory Relatives.fromJson(Map<String, dynamic> json) => Relatives(
-        accountId: json["account_id"],
+        profileId: json["profile_id"],
         relativesName: json["relatives_name"],
         relativesPhone: json["relatives_phone"],
         relativesBirthday: json["relatives_birthday"],
       );
   Map<String, dynamic> toJson() => {
-        "account_id": accountId,
+        "profile_id": profileId,
         "relatives_name": relativesName,
         "relatives_phone": relativesPhone,
         "relatives_birthday": relativesBirthday

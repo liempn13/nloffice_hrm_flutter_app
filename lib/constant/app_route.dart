@@ -12,4 +12,8 @@ class AppRoutes {
   static const tokenRoute = "token_widget_item";
   static const profileListRoute = "profilelist_screen";
   static const departmentListRoute = "departmentlist_screen";
+  static const salariListRoute = "salarilist_screen";
+  static const diplomaListRoute = "diplomalist_screen";
+  static const relativeListRoute = "relativelist_screen";
+  static const enterpriseListRoute = "enterpriselist_screen";
 }

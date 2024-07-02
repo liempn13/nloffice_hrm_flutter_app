@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Salaries {
   Salaries(
       {this.salaryId,
@@ -13,7 +11,7 @@ class Salaries {
   double? salary; //hệ số lương
   double? allowance; //hệ số phụ cấp
   int? enterpriseId;
-  Int8? status;
+  int? status;
 
   factory Salaries.fromJson(Map<String, dynamic> json) => Salaries(
       salaryId: json["salary_id"],
