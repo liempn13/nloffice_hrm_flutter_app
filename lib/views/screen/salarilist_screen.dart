@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/model/profile/profiles_model.dart';
 import 'package:nloffice_hrm/model/salary/salaries_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
-import 'package:nloffice_hrm/views/screen/add_profile_screen.dart';
-import 'package:nloffice_hrm/views/screen/info_profile_screen.dart';
+import 'package:nloffice_hrm/views/screen/info_salari_sceen.dart';
 
-class ProfileListScreen extends StatefulWidget {
+class SalaryListScreen extends StatefulWidget {
   @override
-  _ProfileListScreenState createState() => _ProfileListScreenState();
+  _SalaryListScreenState createState() => _SalaryListScreenState();
 }
 
-class _ProfileListScreenState extends State<ProfileListScreen> {
+class _SalaryListScreenState extends State<SalaryListScreen> {
   List<Profiles> profiles = [
     Profiles(
       profileName: 'Lê Khánh Dương',
@@ -35,18 +34,6 @@ class _ProfileListScreenState extends State<ProfileListScreen> {
     ),
     // Add more salaries as needed
   ];
-  void _handleDelete() {
-    setState(() {
-      profiles =
-          profiles.where((profile) => profile.profileStatus != 0).toList();
-    });
-  }
-
-  void _handleAdd(Profiles newProfile) {
-    setState(() {
-      profiles.add(newProfile);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,35 +46,28 @@ class _ProfileListScreenState extends State<ProfileListScreen> {
         itemCount: profiles.length,
         itemBuilder: (context, index) {
           final profile = profiles[index];
+          final salary = salaries.firstWhere(
+            (s) => s.salaryId.toString() == profile.salaryId,
+            orElse: () => Salaries(),
+          );
 
           return ListTile(
             title: Text(profile.profileName ?? ''),
-            subtitle: Text('${profile.departmentId}'),
+            subtitle: Text(
+                '${profile.departmentId}\nSalary: ${salary.salary ?? 0.0}'),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => InfoProfileScreen(
+                  builder: (context) => InfoSalariScreen(
+                    salary: salary,
                     profile: profile,
-                    onDelete: _handleDelete,
                   ),
                 ),
               );
             },
           );
         },
-      ),
-      fab: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddProfilePage(onAdd: _handleAdd),
-            ),
-          );
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
       ),
     );
   }

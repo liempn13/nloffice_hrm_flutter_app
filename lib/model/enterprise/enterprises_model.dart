@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Enterprises // Doanh nghiệp
 {
   Enterprises(
@@ -16,7 +14,7 @@ class Enterprises // Doanh nghiệp
   String? email;
   String? phone;
   DateTime? assignDate;
-  Int8? enterpriseStatus;
+  int? enterpriseStatus;
   factory Enterprises.formJson(Map<String, dynamic> json) => Enterprises(
       enterpriseId: json["enteprise_id"],
       name: json["name"],

@@ -5,13 +5,17 @@ import 'package:nloffice_hrm/views/custom_widgets/token_widget_item.dart';
 import 'package:nloffice_hrm/views/screen/auth/forgot_password/forgot_password_screen.dart';
 import 'package:nloffice_hrm/views/screen/auth/login/login_screen.dart';
 import 'package:nloffice_hrm/views/screen/departmentlist_screen.dart';
+import 'package:nloffice_hrm/views/screen/diplomalist_screen.dart';
 import 'package:nloffice_hrm/views/screen/employeelist_screen.dart';
+import 'package:nloffice_hrm/views/screen/enterpriseslist_screen.dart';
 import 'package:nloffice_hrm/views/screen/home_screen.dart';
 import 'package:nloffice_hrm/views/screen/language_screen.dart';
 import 'package:nloffice_hrm/views/screen/menu_screen.dart';
 import 'package:nloffice_hrm/views/screen/notification_screen.dart';
 import 'package:nloffice_hrm/views/screen/profile_screen.dart';
 import 'package:nloffice_hrm/views/screen/profilelist_screen.dart';
+import 'package:nloffice_hrm/views/screen/relativelist_screen.dart';
+import 'package:nloffice_hrm/views/screen/salarilist_screen.dart';
 import 'package:nloffice_hrm/views/screen/sign_up_screen.dart';
 import 'package:nloffice_hrm/views/screen/welcome_screen.dart';
 
@@ -126,6 +130,38 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           builder: (context) => DepartmentsScreen(),
           settings: const RouteSettings(
             name: AppRoutes.departmentListRoute,
+          ));
+
+    ///
+    case AppRoutes.salariListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => SalaryListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.salariListRoute,
+          ));
+
+    ///
+    case AppRoutes.diplomaListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => DiplomaListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.diplomaListRoute,
+          ));
+
+    ///
+    case AppRoutes.relativeListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => RelativeListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.relativeListRoute,
+          ));
+
+    ///
+    case AppRoutes.enterpriseListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => EnterpriseListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.enterpriseListRoute,
           ));
     default:
       return MaterialPageRoute(

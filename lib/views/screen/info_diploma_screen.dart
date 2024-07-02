@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:nloffice_hrm/model/diploma/diplomas_model.dart';
 import 'package:nloffice_hrm/model/profile/profiles_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
-import 'package:nloffice_hrm/views/screen/edit_profile_screen.dart';
+import 'package:nloffice_hrm/views/screen/edit_diploma_screen.dart';
 
-class InfoProfileScreen extends StatelessWidget {
+class InfoDiplomaScreen extends StatelessWidget {
+  final Diplomas diploma;
   final Profiles profile;
-  final VoidCallback onDelete;
 
-  InfoProfileScreen({required this.profile, required this.onDelete});
+  InfoDiplomaScreen({
+    required this.diploma,
+    required this.profile,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Profile Information'),
+        title: Text('Diploma Information'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -50,24 +54,14 @@ class InfoProfileScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 Divider(),
                 InfoTile(
-                  icon: Icons.phone,
-                  label: 'Điện thoại',
-                  value: profile.phone ?? 'Không có',
+                  icon: Icons.book,
+                  label: 'Mã bằng cấp',
+                  value: diploma.diplomaId ?? 'Không có',
                 ),
                 InfoTile(
-                  icon: Icons.email,
-                  label: 'E-mail',
-                  value: profile.email ?? 'Không có',
-                ),
-                InfoTile(
-                  icon: Icons.business,
-                  label: 'Phòng',
-                  value: profile.departmentId ?? 'Không có',
-                ),
-                InfoTile(
-                  icon: Icons.cake,
-                  label: 'Ngày sinh',
-                  value: profile.birthday?.toIso8601String() ?? 'Không có',
+                  icon: Icons.school,
+                  label: 'Loại bằng cấp',
+                  value: diploma.diplomaName ?? 'Không có',
                 ),
               ],
             ),
@@ -78,19 +72,13 @@ class InfoProfileScreen extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.edit, color: Colors.blue),
                   onPressed: () {
-                    // Handle the edit action
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              EditProfileScreen(profile: profile),
+                          builder: (context) => EditDiplomaScreen(
+                            diploma: diploma,
+                          ),
                         ));
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {
-                    _showDeleteConfirmationDialog(context);
                   },
                 ),
               ],
@@ -98,35 +86,6 @@ class InfoProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  void _showDeleteConfirmationDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Confirm Delete'),
-          content: Text('Are you sure you want to delete this profile?'),
-          actions: [
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop(); // Dismiss the dialog
-              },
-            ),
-            TextButton(
-              child: Text('Delete'),
-              onPressed: () {
-                profile.deactivate();
-                onDelete();
-                Navigator.of(context).pop(); // Dismiss the dialog
-                Navigator.pop(context); // Go back to the previous screen
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
