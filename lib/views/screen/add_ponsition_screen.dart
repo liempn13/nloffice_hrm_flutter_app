@@ -1,45 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/model/profile/profiles_model.dart';
+import 'package:nloffice_hrm/model/position/position_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 
-class AddProfilePage extends StatefulWidget {
-  final Function(Profiles) onAdd;
+class AddPositionScreen extends StatefulWidget {
+  final Function(Positions) onAdd;
 
-  AddProfilePage({required this.onAdd});
+  AddPositionScreen({required this.onAdd});
 
   @override
-  _AddProfilePageState createState() => _AddProfilePageState();
+  _AddPositionScreenState createState() => _AddPositionScreenState();
 }
 
-class _AddProfilePageState extends State<AddProfilePage> {
+class _AddPositionScreenState extends State<AddPositionScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _profileNameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _departmentController = TextEditingController();
-  DateTime _birthday = DateTime.now();
+  final _positionIdController = TextEditingController();
+  final _positionNameController = TextEditingController();
+  final _enterpriseIdController = TextEditingController();
 
   @override
   void dispose() {
-    _profileNameController.dispose();
-    _phoneController.dispose();
-    _emailController.dispose();
-    _departmentController.dispose();
+    _positionIdController.dispose();
+    _positionNameController.dispose();
+    _enterpriseIdController.dispose();
     super.dispose();
   }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final newProfile = Profiles(
-        profileName: _profileNameController.text,
-        profileStatus: 1,
-        phone: _phoneController.text,
-        email: _emailController.text,
-        departmentId: _departmentController.text,
-        birthday: _birthday,
+      final newPosition = Positions(
+        positionId: _positionIdController.text,
+        positionName: _positionNameController.text,
+        enterpriseId: int.tryParse(_enterpriseIdController.text),
       );
 
-      widget.onAdd(newProfile);
+      widget.onAdd(newPosition);
       Navigator.pop(context);
     }
   }
@@ -49,7 +43,7 @@ class _AddProfilePageState extends State<AddProfilePage> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Thêm nhân viên'),
+        title: Text('Thêm chức vụ'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -58,18 +52,18 @@ class _AddProfilePageState extends State<AddProfilePage> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _profileNameController,
+                  controller: _positionIdController,
                   decoration: InputDecoration(
-                    labelText: 'Tên nhân viên',
+                    labelText: 'Mã chức vụ',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter profile name';
+                      return 'Please enter position ID';
                     }
                     return null;
                   },
@@ -78,16 +72,16 @@ class _AddProfilePageState extends State<AddProfilePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _phoneController,
+                  controller: _positionNameController,
                   decoration: InputDecoration(
-                    labelText: 'Số điện thoại',
+                    labelText: 'Tên chức vụ',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter phone number';
+                      return 'Please enter position name';
                     }
                     return null;
                   },
@@ -96,34 +90,19 @@ class _AddProfilePageState extends State<AddProfilePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _emailController,
+                  controller: _enterpriseIdController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: 'Id Công ty',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter email';
+                      return 'Please enter enterprise ID';
                     }
-                    return null;
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextFormField(
-                  controller: _departmentController,
-                  decoration: InputDecoration(
-                    labelText: 'Công ty',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter department';
+                    if (int.tryParse(value) == null) {
+                      return 'Please enter a valid number';
                     }
                     return null;
                   },
@@ -132,7 +111,7 @@ class _AddProfilePageState extends State<AddProfilePage> {
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _submit,
-                child: Text('Thêm nhân viên'),
+                child: Text('Thêm chức vụ'),
               ),
             ],
           ),

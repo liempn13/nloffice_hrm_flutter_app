@@ -14,7 +14,7 @@ class InfoProfileScreen extends StatelessWidget {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Profile Information'),
+        title: Text('Thông ti nhân viên'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

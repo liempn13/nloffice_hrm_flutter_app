@@ -35,7 +35,6 @@ class _EditDiplomaScreenState extends State<EditDiplomaScreen> {
 
   void saveDiploma() {
     setState(() {
-      widget.diploma.profileId = profileIdController.text;
       widget.diploma.diplomaName = diplomaNameController.text;
       widget.diploma.diplomaId = diplomaIdController.text;
     });
@@ -47,7 +46,7 @@ class _EditDiplomaScreenState extends State<EditDiplomaScreen> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Edit Diploma'),
+        title: Text('Bằng cấp'),
         actions: [
           IconButton(
             icon: Icon(Icons.save),
@@ -69,26 +68,11 @@ class _EditDiplomaScreenState extends State<EditDiplomaScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
-                              controller: profileIdController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Profile ID',
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextFormField(
                               controller: diplomaNameController,
                               scrollPadding: EdgeInsets.only(bottom: 150),
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
-                                labelText: 'Diploma Name',
+                                labelText: 'Loại bằng cấp',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -103,7 +87,7 @@ class _EditDiplomaScreenState extends State<EditDiplomaScreen> {
                               scrollPadding: EdgeInsets.only(bottom: 150),
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
-                                labelText: 'Diploma ID',
+                                labelText: 'ID bằng cấp',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),

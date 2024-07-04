@@ -1,45 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/model/profile/profiles_model.dart';
+import 'package:nloffice_hrm/model/decision/decisions_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 
-class AddProfilePage extends StatefulWidget {
-  final Function(Profiles) onAdd;
-
-  AddProfilePage({required this.onAdd});
-
+class AddDecisionScreen extends StatefulWidget {
   @override
-  _AddProfilePageState createState() => _AddProfilePageState();
+  _AddDecisionScreenState createState() => _AddDecisionScreenState();
 }
 
-class _AddProfilePageState extends State<AddProfilePage> {
+class _AddDecisionScreenState extends State<AddDecisionScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _profileNameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _departmentController = TextEditingController();
-  DateTime _birthday = DateTime.now();
+  final _decisionNameController = TextEditingController();
+  final _salaryIdController = TextEditingController();
+  final _enterpriseIdController = TextEditingController();
 
   @override
   void dispose() {
-    _profileNameController.dispose();
-    _phoneController.dispose();
-    _emailController.dispose();
-    _departmentController.dispose();
+    _decisionNameController.dispose();
+    _salaryIdController.dispose();
+    _enterpriseIdController.dispose();
     super.dispose();
   }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final newProfile = Profiles(
-        profileName: _profileNameController.text,
-        profileStatus: 1,
-        phone: _phoneController.text,
-        email: _emailController.text,
-        departmentId: _departmentController.text,
-        birthday: _birthday,
+      final newDecision = Decisions(
+        decisionName: _decisionNameController.text,
+        salaryId: _salaryIdController.text,
+        enterpriseId: int.parse(_enterpriseIdController.text),
       );
-
-      widget.onAdd(newProfile);
       Navigator.pop(context);
     }
   }
@@ -49,7 +37,7 @@ class _AddProfilePageState extends State<AddProfilePage> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Thêm nhân viên'),
+        title: Text('Thêm quyết định'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -60,16 +48,16 @@ class _AddProfilePageState extends State<AddProfilePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _profileNameController,
+                  controller: _decisionNameController,
                   decoration: InputDecoration(
-                    labelText: 'Tên nhân viên',
+                    labelText: 'Tên quyết định',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter profile name';
+                      return 'Vui lòng nhập tên quyết định';
                     }
                     return null;
                   },
@@ -78,16 +66,16 @@ class _AddProfilePageState extends State<AddProfilePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _phoneController,
+                  controller: _salaryIdController,
                   decoration: InputDecoration(
-                    labelText: 'Số điện thoại',
+                    labelText: 'Mã lương',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter phone number';
+                      return 'Vui lòng nhập mã lương';
                     }
                     return null;
                   },
@@ -96,43 +84,26 @@ class _AddProfilePageState extends State<AddProfilePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: _emailController,
+                  controller: _enterpriseIdController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: 'Mã công ty',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter email';
+                      return 'Vui lòng nhập mã công ty';
                     }
                     return null;
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextFormField(
-                  controller: _departmentController,
-                  decoration: InputDecoration(
-                    labelText: 'Công ty',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter department';
-                    }
-                    return null;
-                  },
+                  keyboardType: TextInputType.number,
                 ),
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _submit,
-                child: Text('Thêm nhân viên'),
+                child: Text('Thêm quyết định'),
               ),
             ],
           ),

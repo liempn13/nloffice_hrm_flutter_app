@@ -38,7 +38,7 @@ class _InfoRelativeScreenState extends State<InfoRelativeScreen> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Relative Information'),
+        title: Text('Thông tin thân nhân'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -53,24 +53,24 @@ class _InfoRelativeScreenState extends State<InfoRelativeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Relative ${index + 1}',
+                        'Thân nhân ${index + 1}',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 8),
                       InfoTile(
                         icon: Icons.person,
-                        label: 'Name',
+                        label: 'Tên',
                         value: relative.relativesName ?? 'Unknown',
                       ),
                       InfoTile(
                         icon: Icons.phone,
-                        label: 'Phone',
+                        label: 'Số điện thoại',
                         value: relative.relativesPhone ?? 'Unknown',
                       ),
                       InfoTile(
                         icon: Icons.cake,
-                        label: 'Birthday',
+                        label: 'Ngày sinh',
                         value: relative.relativesBirthday ?? 'Unknown',
                       ),
                       Row(

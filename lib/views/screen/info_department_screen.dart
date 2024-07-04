@@ -14,7 +14,7 @@ class DepartmentInfoScreen extends StatelessWidget {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Department Information'),
+        title: Text('Thông tin'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

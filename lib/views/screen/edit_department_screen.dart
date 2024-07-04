@@ -20,7 +20,6 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
   @override
   void initState() {
     super.initState();
-    idController = TextEditingController(text: widget.department.departmentID);
     nameController =
         TextEditingController(text: widget.department.departmentName);
     enterpriseIdController =
@@ -38,7 +37,6 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
 
   void saveDepartment() {
     setState(() {
-      widget.department.departmentID = idController.text;
       widget.department.departmentName = nameController.text;
       widget.department.enterpriseID =
           int.tryParse(enterpriseIdController.text);
@@ -52,7 +50,7 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Edit Department'),
+        title: const Text('Thông tin'),
       ),
       body: LayoutBuilder(builder: (context, constraints) {
         return IntrinsicHeight(
@@ -68,28 +66,12 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
-                              cursorColor: Colors.black,
-                              controller: idController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Department ID',
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextFormField(
                               controller: nameController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Department Name',
-                                border: OutlineInputBorder(
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
+                              decoration: const InputDecoration(
+                                labelText: 'Tên',
+                                border: const OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                 ),
@@ -100,10 +82,10 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
                               controller: enterpriseIdController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Enterprise ID',
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
+                              decoration: const InputDecoration(
+                                labelText: 'ID doanh nghiệp',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -118,13 +100,13 @@ class _EditDepartmentScreenState extends State<EditDepartmentScreen> {
                 ),
                 ElevatedButton(
                   onPressed: saveDepartment,
-                  child: Text(
+                  child: const Text(
                     'Save',
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue, // Background color
-                    minimumSize: Size(
+                    minimumSize: const Size(
                         double.infinity, 50), // Make the button span full width
                   ),
                 ),

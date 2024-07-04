@@ -12,7 +12,6 @@ class AddRelativeScreen extends StatefulWidget {
 }
 
 class _AddRelativeScreenState extends State<AddRelativeScreen> {
-  late TextEditingController profileIdController;
   late TextEditingController relativesNameController;
   late TextEditingController relativesPhoneController;
   late TextEditingController relativesBirthdayController;
@@ -20,7 +19,6 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
   @override
   void initState() {
     super.initState();
-    profileIdController = TextEditingController();
     relativesNameController = TextEditingController();
     relativesPhoneController = TextEditingController();
     relativesBirthdayController = TextEditingController();
@@ -28,7 +26,6 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
 
   @override
   void dispose() {
-    profileIdController.dispose();
     relativesNameController.dispose();
     relativesPhoneController.dispose();
     relativesBirthdayController.dispose();
@@ -37,7 +34,6 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
 
   void addRelative() {
     final newRelative = Relatives(
-      profileId: profileIdController.text,
       relativesName: relativesNameController.text,
       relativesPhone: relativesPhoneController.text,
       relativesBirthday: relativesBirthdayController.text,
@@ -51,10 +47,10 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Add Relative'),
+        title: const Text('Thêm thân nhân'),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
+            icon: const Icon(Icons.save),
             onPressed: addRelative,
           ),
         ],
@@ -67,24 +63,11 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  controller: profileIdController,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                    labelText: 'Profile ID',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextFormField(
                   controller: relativesNameController,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                    labelText: 'Relative Name',
-                    border: OutlineInputBorder(
+                  style: const TextStyle(fontSize: 18),
+                  decoration: const InputDecoration(
+                    labelText: 'Tên thân nhân',
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
@@ -94,9 +77,9 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
                   controller: relativesPhoneController,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                    labelText: 'Relative Phone',
+                  style: const TextStyle(fontSize: 18),
+                  decoration: const InputDecoration(
+                    labelText: 'Số điện thoại',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -107,9 +90,9 @@ class _AddRelativeScreenState extends State<AddRelativeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
                   controller: relativesBirthdayController,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                    labelText: 'Relative Birthday',
+                  style: const TextStyle(fontSize: 18),
+                  decoration: const InputDecoration(
+                    labelText: 'Ngày sinh',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
