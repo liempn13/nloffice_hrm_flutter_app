@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class WorkingProcesses {
   WorkingProcesses(
       {this.workingprocessId,
@@ -17,7 +15,7 @@ class WorkingProcesses {
   DateTime? workingprocessStarttime;
   DateTime? workingprocessEndtime;
   int? enterpriseId;
-  Int8? workingprocessStatus;
+  int? workingprocessStatus;
 
   factory WorkingProcesses.fromJson(Map<String, dynamic> json) =>
       WorkingProcesses(

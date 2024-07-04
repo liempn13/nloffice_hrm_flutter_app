@@ -1,47 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:nloffice_hrm/model/relatives/relatives_model.dart';
+import 'package:nloffice_hrm/model/enterprise/enterprises_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 
-class EditRelativeScreen extends StatefulWidget {
-  final Relatives relative;
+class EditEnterpriseScreen extends StatefulWidget {
+  final Enterprises enterprise;
 
-  EditRelativeScreen({required this.relative});
+  EditEnterpriseScreen({required this.enterprise});
 
   @override
-  _EditRelativeScreenState createState() => _EditRelativeScreenState();
+  _EditEnterpriseScreenState createState() => _EditEnterpriseScreenState();
 }
 
-class _EditRelativeScreenState extends State<EditRelativeScreen> {
-  late TextEditingController relativesNameController;
-  late TextEditingController relativesPhoneController;
-  late TextEditingController relativesBirthdayController;
+class _EditEnterpriseScreenState extends State<EditEnterpriseScreen> {
+  late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
+  late TextEditingController assignDateController;
+
+  bool showLoginFields = false;
 
   @override
   void initState() {
     super.initState();
-    relativesNameController =
-        TextEditingController(text: widget.relative.relativesName);
-    relativesPhoneController =
-        TextEditingController(text: widget.relative.relativesPhone);
-    relativesBirthdayController =
-        TextEditingController(text: widget.relative.relativesBirthday);
+    nameController = TextEditingController(text: widget.enterprise.name);
+    emailController = TextEditingController(text: widget.enterprise.email);
+    phoneController = TextEditingController(text: widget.enterprise.phone);
+    assignDateController = TextEditingController(
+      text: widget.enterprise.assignDate != null
+          ? widget.enterprise.assignDate!.toIso8601String().split('T')[0]
+          : '',
+    );
   }
 
   @override
   void dispose() {
-    relativesNameController.dispose();
-    relativesPhoneController.dispose();
-    relativesBirthdayController.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    assignDateController.dispose();
     super.dispose();
   }
 
-  void saveRelative() {
+  void saveEnterprise() {
     setState(() {
-      widget.relative.relativesName = relativesNameController.text;
-      widget.relative.relativesPhone = relativesPhoneController.text;
-      widget.relative.relativesBirthday = relativesBirthdayController.text;
+      widget.enterprise.name = nameController.text;
+      widget.enterprise.email = emailController.text;
+      widget.enterprise.phone = phoneController.text;
+      widget.enterprise.assignDate =
+          DateTime.tryParse(assignDateController.text);
+      // Không cập nhật thông tin đăng nhập ở đây
     });
-    Navigator.pop(context, widget.relative);
+    Navigator.pop(context, widget.enterprise);
+  }
+
+  void toggleLoginFields() {
+    setState(() {
+      showLoginFields = !showLoginFields;
+    });
+  }
+
+  void saveLoginInfo() {
+    // Handle saving login information here
+    // For example, update username and password
+    setState(() {
+      // Logic to save login info
+    });
+    toggleLoginFields(); // Hide login fields after saving
   }
 
   @override
@@ -49,17 +73,17 @@ class _EditRelativeScreenState extends State<EditRelativeScreen> {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Thân nhân'),
+        title: Text('Doanh nghiệp'),
         actions: [
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: saveRelative,
+            onPressed: saveEnterprise,
           ),
         ],
       ),
       body: LayoutBuilder(builder: (context, constraints) {
-        return IntrinsicHeight(
-          child: Padding(
+        return BasePage(
+          body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
@@ -71,11 +95,11 @@ class _EditRelativeScreenState extends State<EditRelativeScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
-                              controller: relativesNameController,
+                              controller: nameController,
                               scrollPadding: EdgeInsets.only(bottom: 150),
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
-                                labelText: 'Tên thân nhân',
+                                labelText: 'Tên',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -86,7 +110,22 @@ class _EditRelativeScreenState extends State<EditRelativeScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
-                              controller: relativesPhoneController,
+                              controller: emailController,
+                              scrollPadding: EdgeInsets.only(bottom: 150),
+                              style: TextStyle(fontSize: 18),
+                              decoration: InputDecoration(
+                                labelText: 'Email',
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextFormField(
+                              controller: phoneController,
                               scrollPadding: EdgeInsets.only(bottom: 150),
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
@@ -101,11 +140,11 @@ class _EditRelativeScreenState extends State<EditRelativeScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
-                              controller: relativesBirthdayController,
+                              controller: assignDateController,
                               scrollPadding: EdgeInsets.only(bottom: 150),
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
-                                labelText: 'Ngày sinh',
+                                labelText: 'Assign Date (YYYY-MM-DD)',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),

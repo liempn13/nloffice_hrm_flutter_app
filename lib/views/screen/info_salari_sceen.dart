@@ -18,7 +18,7 @@ class InfoSalariScreen extends StatelessWidget {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Profile Salary'),
+        title: Text('Thông tin lương'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

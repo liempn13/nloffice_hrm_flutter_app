@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/model/department/department_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
+import 'package:nloffice_hrm/views/custom_widgets/custom_seach.dart';
 import 'package:nloffice_hrm/views/screen/add_department_screen.dart';
 import 'package:nloffice_hrm/views/screen/info_department_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,6 +97,21 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
     });
   }
 
+  List<Departments> filteredDepartments = [];
+  void _handleSearch(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredDepartments = departments;
+      } else {
+        filteredDepartments = departments.where((departments) {
+          return departments.departmentName!
+              .toLowerCase()
+              .contains(query.toLowerCase());
+        }).toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -109,27 +125,42 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: departments.length,
-        itemBuilder: (context, index) {
-          final department = departments[index];
-          if (department.departmentStatus == 0)
-            return Container(); // Don't show inactive departments
-          return ListTile(
-            title: Text(department.departmentName ?? ''),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DepartmentInfoScreen(
-                    department: department,
-                    onDelete: () => _handleDelete(department),
-                  ),
-                ),
-              );
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CustomSearchBar(
+              suggestions: departments
+                  .map((departments) => departments.departmentName!)
+                  .toList(),
+              onTextChanged: _handleSearch,
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: departments.length,
+              itemBuilder: (context, index) {
+                final department = departments[index];
+                if (department.departmentStatus == 0)
+                  return Container(); // Don't show inactive departments
+                return ListTile(
+                  title: Text(department.departmentName ?? ''),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DepartmentInfoScreen(
+                          department: department,
+                          onDelete: () => _handleDelete(department),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
       fab: FloatingActionButton(
         onPressed: () {

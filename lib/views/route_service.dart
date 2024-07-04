@@ -4,18 +4,21 @@ import 'package:nloffice_hrm/views/custom_widgets/bottom_nav_controller.dart';
 import 'package:nloffice_hrm/views/custom_widgets/token_widget_item.dart';
 import 'package:nloffice_hrm/views/screen/auth/forgot_password/forgot_password_screen.dart';
 import 'package:nloffice_hrm/views/screen/auth/login/login_screen.dart';
-import 'package:nloffice_hrm/views/screen/departmentlist_screen.dart';
-import 'package:nloffice_hrm/views/screen/diplomalist_screen.dart';
-import 'package:nloffice_hrm/views/screen/employeelist_screen.dart';
-import 'package:nloffice_hrm/views/screen/enterpriseslist_screen.dart';
 import 'package:nloffice_hrm/views/screen/home_screen.dart';
 import 'package:nloffice_hrm/views/screen/language_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_decision_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_department_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_diploma_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_employe_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_enterprises_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_ponsition_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_profile_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_project_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_relative_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_salari_screen.dart';
 import 'package:nloffice_hrm/views/screen/menu_screen.dart';
 import 'package:nloffice_hrm/views/screen/notification_screen.dart';
 import 'package:nloffice_hrm/views/screen/profile_screen.dart';
-import 'package:nloffice_hrm/views/screen/profilelist_screen.dart';
-import 'package:nloffice_hrm/views/screen/relativelist_screen.dart';
-import 'package:nloffice_hrm/views/screen/salarilist_screen.dart';
 import 'package:nloffice_hrm/views/screen/sign_up_screen.dart';
 import 'package:nloffice_hrm/views/screen/welcome_screen.dart';
 
@@ -159,9 +162,33 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     ///
     case AppRoutes.enterpriseListRoute: // Add this case
       return MaterialPageRoute(
-          builder: (context) => EnterpriseListScreen(),
+          builder: (context) => EnterprisesListScreen(),
           settings: const RouteSettings(
             name: AppRoutes.enterpriseListRoute,
+          ));
+
+    ///
+    case AppRoutes.ponsitionListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => PositionsListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.ponsitionListRoute,
+          ));
+
+    ///
+    case AppRoutes.projectListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => ProjectsListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.projectListRoute,
+          ));
+
+    ///
+    case AppRoutes.decisionListRoute: // Add this case
+      return MaterialPageRoute(
+          builder: (context) => DecisionsListScreen(),
+          settings: const RouteSettings(
+            name: AppRoutes.decisionListRoute,
           ));
     default:
       return MaterialPageRoute(

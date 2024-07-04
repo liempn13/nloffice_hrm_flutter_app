@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/model/profile/profiles_model.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final Profiles profile;
@@ -20,6 +21,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController? loginPasswordController;
 
   bool showLoginFields = false;
+  String _departmentTitle = 'Phòng ban';
 
   @override
   void initState() {
@@ -70,15 +72,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     toggleLoginFields(); // Hide login fields after saving
   }
 
+  Future<void> _loadDepartmentTitle() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _departmentTitle = prefs.getString('departmentsTitle') ?? 'Phòng ban';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
       showAppBar: true,
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Nhân viên'),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
+            icon: const Icon(Icons.save),
             onPressed: saveProfile,
           ),
         ],
@@ -98,10 +107,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
                               controller: nameController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Name',
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
+                              decoration: const InputDecoration(
+                                labelText: 'Tên',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -113,9 +122,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
                               controller: emailController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
+                              decoration: const InputDecoration(
                                 labelText: 'Email',
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -128,10 +137,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
                               controller: phoneController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
-                              decoration: InputDecoration(
-                                labelText: 'Phone',
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
+                              decoration: const InputDecoration(
+                                labelText: 'Số điện thoại',
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -143,11 +152,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: TextFormField(
                               controller: departmentController,
-                              scrollPadding: EdgeInsets.only(bottom: 150),
-                              style: TextStyle(fontSize: 18),
+                              scrollPadding: const EdgeInsets.only(bottom: 150),
+                              style: const TextStyle(fontSize: 18),
                               decoration: InputDecoration(
-                                labelText: 'Department',
-                                border: OutlineInputBorder(
+                                labelText: _departmentTitle,
+                                border: const OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                 ),
@@ -161,10 +170,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   const EdgeInsets.symmetric(vertical: 8.0),
                               child: TextFormField(
                                 controller: loginUsernameController,
-                                scrollPadding: EdgeInsets.only(bottom: 150),
-                                style: TextStyle(fontSize: 18),
-                                decoration: InputDecoration(
-                                  labelText: 'Username',
+                                scrollPadding:
+                                    const EdgeInsets.only(bottom: 150),
+                                style: const TextStyle(fontSize: 18),
+                                decoration: const InputDecoration(
+                                  labelText: 'Tài khoản',
                                   border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
@@ -177,20 +187,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   const EdgeInsets.symmetric(vertical: 8.0),
                               child: TextFormField(
                                 controller: loginPasswordController,
-                                scrollPadding: EdgeInsets.only(bottom: 150),
-                                style: TextStyle(fontSize: 18),
-                                decoration: InputDecoration(
-                                  labelText: 'Password',
+                                scrollPadding:
+                                    const EdgeInsets.only(bottom: 150),
+                                style: const TextStyle(fontSize: 18),
+                                decoration: const InputDecoration(
+                                  labelText: 'Mật khẩu',
                                   border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
                                   ),
                                 ),
                               ),
                             ),
                             ElevatedButton(
                               onPressed: saveLoginInfo,
-                              child: Text('Save',
+                              child: const Text('Save',
                                   style: TextStyle(color: Colors.white)),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
@@ -207,11 +218,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   onPressed: toggleLoginFields,
                   child: Text(
                     showLoginFields ? 'Cancel' : 'Change Login Info',
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue, // Background color
-                    minimumSize: Size(
+                    minimumSize: const Size(
                         double.infinity, 50), // Make the button span full width
                   ),
                 ),
