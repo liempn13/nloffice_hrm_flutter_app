@@ -42,6 +42,8 @@ dependencies:
   synchronized: ^3.1.0+1
   fixnum: ^1.1.0
   shared_preferences: ^2.2.3
+  dio: ^5.5.0
+  # qr_code_scanner: ^1.0.0
 
 dev_dependencies:
   flutter_test:

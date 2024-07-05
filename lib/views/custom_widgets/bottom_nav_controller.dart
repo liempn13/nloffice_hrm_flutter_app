@@ -28,7 +28,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   ),
                   IconButton(
                     icon: Icon(Icons.calendar_today),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.of(context)
+                      //     .pushNamed(AppRoutes.scanenQRCodeRoute);
+                    },
                   ),
                   SizedBox(width: 40), // The dummy child
                   IconButton(

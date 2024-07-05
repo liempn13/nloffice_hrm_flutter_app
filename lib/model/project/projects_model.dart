@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Projects {
   Projects(
       {this.projectId,
@@ -9,7 +7,7 @@ class Projects {
       this.departmentId});
   String? projectId;
   String? projectName;
-  Int8? projectStatus;
+  int? projectStatus;
   int? enterpriseId;
   String? departmentId;
   factory Projects.fromJson(Map<String, dynamic> json) => Projects(

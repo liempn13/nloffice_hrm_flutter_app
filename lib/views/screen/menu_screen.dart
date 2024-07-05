@@ -70,18 +70,19 @@ class _MenuScreenState extends State<MenuScreen> {
         'route': AppRoutes.enterpriseListRoute
       },
       {
-        'icon': Icons.phone,
-        'text': 'Phonebook',
-        // 'route': AppRoutes.phonebookRoute
+        'icon': Icons.business_center_rounded,
+        'text': 'Dự án',
+        'route': AppRoutes.projectListRoute
       },
       {
-        'icon': Icons.event,
-        'text': 'Appointments',
-        // 'route': AppRoutes.appointmentsRoute
+        'icon': Icons.assignment_ind_rounded,
+        'text': 'Chức vụ',
+        'route': AppRoutes.ponsitionListRoute
       },
       {
-        'icon': Icons.map, 'text': 'Visit',
-        //  'route': AppRoutes.visitRoute
+        'icon': Icons.description_rounded,
+        'text': 'Quyết định',
+        'route': AppRoutes.decisionListRoute
       },
       {
         'icon': Icons.coffee, 'text': 'Break',
