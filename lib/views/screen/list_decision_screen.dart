@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/model/decision/decisions_model.dart';
+import 'package:nloffice_hrm/services/decision_service.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_grid_view.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_seach.dart';
@@ -11,75 +12,88 @@ class DecisionsListScreen extends StatefulWidget {
 }
 
 class _DecisionsListScreenState extends State<DecisionsListScreen> {
-  final List<Decisions> decisions = [
-    Decisions(decisionId: '1', decisionName: 'Decision A', enterpriseId: 1),
-    Decisions(decisionId: '2', decisionName: 'Decision B', enterpriseId: 2),
-    // Add more decisions here
-  ];
-  List<Decisions> filteredDecisions = [];
-  void _handleSearch(String query) {
-    setState(() {
-      if (query.isEmpty) {
-        filteredDecisions = decisions;
-      } else {
-        filteredDecisions = decisions.where((decisions) {
-          return decisions.decisionName!
-              .toLowerCase()
-              .contains(query.toLowerCase());
-        }).toList();
-      }
-    });
-  }
+  // final List<Decisions> decisions = [
+  //   Decisions(decisionId: '1', decisionName: 'Decision A', enterpriseId: 1),
+  //   Decisions(decisionId: '2', decisionName: 'Decision B', enterpriseId: 2),
+  //   // Add more decisions here
+  // ];
+  // List<Decisions> filteredDecisions = [];
+  // void _handleSearch(String query) {
+  //   setState(() {
+  //     if (query.isEmpty) {
+  //       filteredDecisions = decisions;
+  //     } else {
+  //       filteredDecisions = decisions.where((decisions) {
+  //         return decisions.decisionName!
+  //             .toLowerCase()
+  //             .contains(query.toLowerCase());
+  //       }).toList();
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      showAppBar: true,
-      appBar: AppBar(
-        title: Text('Danh sách quyết định'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: CustomSearchBar(
-              suggestions: decisions
-                  .map((decisions) => decisions.decisionName!)
-                  .toList(),
-              onTextChanged: _handleSearch,
-            ),
-          ),
-          Expanded(
-            child: CustomGridView(
-              dataSet: decisions,
-              padding: EdgeInsets.all(16.0),
-              itemBuilder: (context, index) {
-                final decision = decisions[index];
-                return DecisionCard(
-                  decision: decision,
-                );
-              },
-              crossAxisCount: 2,
-              childAspectRatio: 1.0,
-              crossAxisSpacing: 2.0,
-              mainAxisSpacing: 2.0,
-            ),
-          ),
-        ],
-      ),
-      fab: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddDecisionScreen(),
-            ),
-          );
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
-      ),
-    );
+        body: Expanded(
+            child: FutureBuilder<List<Decisions>>(
+      future: fetchListData(),
+      builder: (context, snapshot) {
+        return CustomGridView(
+          dataSet: snapshot.data,
+          itemBuilder: (context, index) {
+            final decision = snapshot.data![index];
+            return DecisionCard(decision: decision);
+          },
+        );
+      },
+    )));
+
+    // return BasePage(
+    //   showAppBar: true,
+    //   showLeadingAction: true,
+    //   body: Column(
+    //     children: [
+    //       Padding(
+    //         padding: const EdgeInsets.all(16.0),
+    //         child: CustomSearchBar(
+    //           suggestions: decisions
+    //               .map((decisions) => decisions.decisionName!)
+    //               .toList(),
+    //           onTextChanged: _handleSearch,
+    //         ),
+    //       ),
+    //       Expanded(
+    //         child: CustomGridView(
+    //           dataSet: decisions,
+    //           padding: EdgeInsets.all(16.0),
+    //           itemBuilder: (context, index) {
+    //             final decision = decisions[index];
+    //             return DecisionCard(
+    //               decision: decision,
+    //             );
+    //           },
+    //           crossAxisCount: 2,
+    //           childAspectRatio: 1.0,
+    //           crossAxisSpacing: 2.0,
+    //           mainAxisSpacing: 2.0,
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    //   fab: FloatingActionButton(
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => AddDecisionScreen(),
+    //         ),
+    //       );
+    //     },
+    //     child: Icon(Icons.add),
+    //     backgroundColor: Colors.blue,
+    //   ),
+    // );
   }
 }
 

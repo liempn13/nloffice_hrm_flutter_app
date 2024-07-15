@@ -6,7 +6,6 @@ import 'package:velocity_x/velocity_x.dart';
 class BasePage extends StatefulWidget {
   final bool showAppBar;
   final bool showLeadingAction;
-  final bool showCart;
   final Function? onBackPressed;
   final String? title;
   final Widget body;
@@ -30,7 +29,6 @@ class BasePage extends StatefulWidget {
     this.showAppBar = false,
     this.showLeadingAction = false,
     this.leading,
-    this.showCart = false,
     this.onBackPressed,
     this.title = "",
     required this.body,
@@ -82,7 +80,7 @@ class _BasePageState extends State<BasePage> {
                       ? widget.leading ??
                           IconButton(
                             icon: const Icon(
-                              FlutterIcons.arrow_right_fea,
+                              FlutterIcons.arrow_left_fea,
                             ),
                             onPressed: (widget.onBackPressed != null)
                                 ? () => widget.onBackPressed!()

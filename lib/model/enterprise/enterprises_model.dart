@@ -15,7 +15,7 @@ class Enterprises // Doanh nghiệp
   String? phone;
   DateTime? assignDate;
   int? enterpriseStatus;
-  factory Enterprises.formJson(Map<String, dynamic> json) => Enterprises(
+  factory Enterprises.fromJson(Map<String, dynamic> json) => Enterprises(
       enterpriseId: json["enteprise_id"],
       name: json["name"],
       licenseNum: json["license_num"],

@@ -9,13 +9,13 @@ import 'package:nloffice_hrm/views/screen/language_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_decision_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_department_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_diploma_screen.dart';
-import 'package:nloffice_hrm/views/screen/list_employe_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_account_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_enterprises_screen.dart';
-import 'package:nloffice_hrm/views/screen/list_ponsition_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_position_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_profile_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_project_screen.dart';
 import 'package:nloffice_hrm/views/screen/list_relative_screen.dart';
-import 'package:nloffice_hrm/views/screen/list_salari_screen.dart';
+import 'package:nloffice_hrm/views/screen/list_salary_screen.dart';
 import 'package:nloffice_hrm/views/screen/menu_screen.dart';
 import 'package:nloffice_hrm/views/screen/notification_screen.dart';
 import 'package:nloffice_hrm/views/screen/profile_screen.dart';
@@ -122,7 +122,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     ///
     case AppRoutes.profileListRoute:
       return MaterialPageRoute(
-          builder: (context) => ProfileListScreen(),
+          builder: (context) => EmployeeListScreen(),
           settings: const RouteSettings(
             name: AppRoutes.profileListRoute,
           ));

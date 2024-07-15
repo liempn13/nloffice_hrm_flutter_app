@@ -43,6 +43,7 @@ dependencies:
   fixnum: ^1.1.0
   shared_preferences: ^2.2.3
   dio: ^5.5.0
+  json_annotation: ^4.0.1
   # qr_code_scanner: ^1.0.0
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nloffice_hrm/model/enterprise/enterprises_model.dart';
+import 'package:nloffice_hrm/services/enterprise_service.dart';
 import 'package:nloffice_hrm/views/custom_widgets/base_page.dart';
 import 'package:nloffice_hrm/views/custom_widgets/custom_seach.dart';
 import 'package:nloffice_hrm/views/screen/add_enterprises_screen.dart';
@@ -60,17 +61,18 @@ class _EnterprisesListScreenState extends State<EnterprisesListScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: filteredEnterprisesList.length,
-              itemBuilder: (context, index) {
-                final enterprise = filteredEnterprisesList[index];
-                return ListTile(
-                  title: Text(enterprise.name ?? ''),
-                  subtitle: Text(enterprise.licenseNum ?? ''),
-                );
-              },
-            ),
-          ),
+              child: FutureBuilder<List<Enterprises>>(
+            future: fetchListData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                return ListTile(title: Text(''));
+              }
+            },
+          )),
         ],
       ),
       fab: FloatingActionButton(
