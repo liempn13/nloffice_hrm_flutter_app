@@ -1,14 +1,16 @@
 class AppStrings {
-  static String baseUrlApi = "https://nloffice.vn/api/V11";
+  AppStrings._();
+
+  static const String baseUrlApi = "http://192.168.1.11:8000/api";
 
   static String appColors = "colors";
   static String notificationsKey = "notifications";
   //
-  static List<String> get Statuses {
-    return [
-      'pending',
-      'accepted',
-      'cancelled',
-    ];
-  }
+  // static List<String> get Statuses {
+  //   return [
+  //     'pending',
+  //     'accepted',
+  //     'cancelled',
+  //   ];
+  // }
 }

@@ -99,11 +99,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     final data = _getData();
     return BasePage(
-      showAppBar: true,
       showLeadingAction: false,
-      appBar: AppBar(
-        title: UserInfo(),
-      ),
       actions: [
         IconButton(
           onPressed: () {},
@@ -155,47 +151,6 @@ class _MenuScreenState extends State<MenuScreen> {
         onPressed: () {
           Navigator.of(context).pushNamed(AppRoutes.menuRoute);
         },
-      ),
-    );
-  }
-}
-
-class UserInfo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.black,
-          ),
-          SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Admin',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // View profile action
-                },
-                child: Text(
-                  'VIEW PROFILE',
-                  style: TextStyle(color: Colors.brown),
-                ),
-              ),
-            ],
-          ),
-          Spacer(),
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-          ),
-        ],
       ),
     );
   }

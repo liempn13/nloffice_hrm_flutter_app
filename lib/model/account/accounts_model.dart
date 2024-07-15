@@ -2,6 +2,12 @@ import 'dart:convert';
 import 'dart:ffi';
 
 class Accounts {
+  int? accountId;
+  int? enterpriseId;
+  int? permission; // mặc định 0 là superadmin, 1 là admin, 2 là nhân viên
+  int? accountStatus;
+  String? username;
+  String? password;
   Accounts(
       {this.accountId,
       this.enterpriseId,
@@ -9,27 +15,28 @@ class Accounts {
       this.accountStatus,
       this.username,
       this.password});
-  String? accountId;
-  int? enterpriseId;
-  Int8? permission; // mặc định 0 là superadmin, 1 là admin, 2 là nhân viên
-  Int8? accountStatus;
-  String? username;
-  String? password;
-  factory Accounts.formJson(Map<String, dynamic> json) => Accounts(
+
+  factory Accounts.fromJson(Map<String, dynamic> json) {
+    return Accounts(
       accountId: json["account_id"],
       enterpriseId: json["enterprise_id"],
       permission: json["permission"],
       accountStatus: json["account_status"],
-      username: json["username"],
-      password: json["password"]);
-  Map<String, dynamic> toJson() => {
-        "account_id": accountId,
-        "enterprise_id": enterpriseId,
-        "permission": permission,
-        "account_status": accountStatus,
-        "username": username,
-        "password": password
-      };
+      username: json["username"].toString(),
+      password: json["password"].toString(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map["account_id"] = accountId;
+    map["enterprise_id"] = enterpriseId;
+    map["permission"] = permission;
+    map["account_status"] = accountStatus;
+    map["username"] = username;
+    map["password"] = password;
+    return map;
+  }
 }
 
 //
@@ -50,28 +57,28 @@ class ResponseLogin {
   factory ResponseLogin.fromJson(Map<String, dynamic> json) => ResponseLogin(
       result: json["result"],
       message: json["message"],
-      data: json["data"] != null ? Accounts.formJson(json["data"]) : null,
+      data: json["data"] != null ? Accounts.fromJson(json["data"]) : null,
       laravelValidationError: json["error"] != null
-          ? LaravelValidationError.formjson(json["error"])
+          ? LaravelValidationError.fromJson(json["error"])
           : null);
 
   Map<String, dynamic> toJson() => {
         "result": result,
         "message": message,
-        "data": data!.toJson(),
+        // "data": data!.toJson(),
       };
 }
 
 class LaravelValidationError {
   // kiểm tra người dùng nhập đăng nhập với API
-  final String? email;
+  final String? username;
   final String? password;
 
-  LaravelValidationError({this.email, this.password});
+  LaravelValidationError({this.username, this.password});
 
-  factory LaravelValidationError.formjson(Map<String, dynamic> json) {
+  factory LaravelValidationError.fromJson(Map<String, dynamic> json) {
     return LaravelValidationError(
-        email: json["email"] != null ? json["email"][0] : null,
+        username: json["username"] != null ? json["username"][0] : null,
         password: json["password"] != null ? json["password"][0] : null);
   }
 }
