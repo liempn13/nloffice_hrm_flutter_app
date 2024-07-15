@@ -37,7 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ], // Drawer icon color
       ),
       drawer: Drawer(
-        child: ListView(),
+        child: Column(children: [
+          ListTile(
+            title: Text('Language Setting'),
+            onTap: () {
+              Navigator.popAndPushNamed(context, AppRoutes.languareRoute);
+            },
+          )
+        ]),
       ),
       backgroundColor: Colors.white,
       body: Column(
